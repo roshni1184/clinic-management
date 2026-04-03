@@ -121,7 +121,7 @@ const __dirname = path.dirname(__filename);
 // middleware
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "*",
     credentials: true,
   })
 );
