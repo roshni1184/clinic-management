@@ -20,7 +20,7 @@ const LabRegister = () => {
       const token = localStorage.getItem("token");
 
       const res = await axios.post(
-        "http://localhost:5000/api/admin/register-lab",
+        "${API}/api/admin/register-lab",
         form,
         { headers: { Authorization: `Bearer ${token}` } }
       );

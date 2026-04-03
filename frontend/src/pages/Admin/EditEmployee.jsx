@@ -23,7 +23,7 @@ const EditEmployee = () => {
         const token = localStorage.getItem("token");
 
         const res = await axios.get(
-          `http://localhost:5000/api/employee/${id}`,
+          `${API}/api/employee/${id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -58,7 +58,7 @@ const EditEmployee = () => {
       const token = localStorage.getItem("token");
 
       await axios.put(
-        `http://localhost:5000/api/employee/${id}`,
+        `${API}/api/employee/${id}`,
         form,
         {
           headers: { Authorization: `Bearer ${token}` },

@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import API from "../utils/api"
 import { Link } from "react-router-dom";
 
 import galleryBg from "../images/gallerybg1.png";
@@ -11,7 +12,7 @@ const Gallery = () => {
 
   const fetchGallery = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/gallery");
+     const res = await axios.get(`${API}/api/gallery`);
       setGalleryItems(res.data);
     } catch (error) {
       console.error("Error fetching gallery", error);
@@ -51,7 +52,7 @@ const Gallery = () => {
               className="bg-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition duration-300"
             >
               <img
-                src={`http://localhost:5000/uploads/gallery/${item.image}`}
+                src={`${API}/uploads/gallery/${item.image}`}
                 alt="Gallery"
                 className="w-full h-80 object-cover"
               />

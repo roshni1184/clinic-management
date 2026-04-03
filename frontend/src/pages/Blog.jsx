@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import blogimg1 from "../images/blogimg1.png";
+import API from "../utils/api";  
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -11,7 +12,7 @@ const Blog = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/admin/blogs");
+        const res = await axios.get(`${API}/api/admin/blogs`);
         setBlogs(res.data);
       } catch (err) {
         console.error("Failed to fetch blogs:", err);
@@ -62,7 +63,7 @@ const Blog = () => {
                 <img
                   src={
                     blog.image
-                      ? `http://localhost:5000/${blog.image}`
+                      ? `${API}/${blog.image}`
                       : blogimg1
                   }
                   alt={blog.title}

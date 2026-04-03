@@ -28,10 +28,10 @@
 //     const fetchReports = async () => {
 //       try {
 //         const [reportsRes, statsRes] = await Promise.all([
-//           axios.get("http://localhost:5000/api/lab-report/all", {
+//           axios.get("${API}/api/lab-report/all", {
 //             headers: { Authorization: `Bearer ${token}` },
 //           }),
-//           axios.get("http://localhost:5000/api/lab-report/stats", {
+//           axios.get("${API}/api/lab-report/stats", {
 //             headers: { Authorization: `Bearer ${token}` },
 //           }),
 //         ]);
@@ -61,7 +61,7 @@
 
 //   const getFullFileUrl = (filePath) => {
 //     if (!filePath) return "";
-//     return `http://localhost:5000${
+//     return `${API}${
 //       filePath.startsWith("/") ? "" : "/"
 //     }${filePath}`;
 //   };
@@ -88,7 +88,7 @@
 //       }
 
 //       const res = await axios.put(
-//         `http://localhost:5000/api/lab-report/${id}`,
+//         `${API}/api/lab-report/${id}`,
 //         formData,
 //         {
 //           headers: {
@@ -119,7 +119,7 @@
 
 //     try {
 //       await axios.delete(
-//         `http://localhost:5000/api/lab-report/${id}`,
+//         `${API}/api/lab-report/${id}`,
 //         {
 //           headers: { Authorization: `Bearer ${token}` },
 //         }
@@ -370,10 +370,10 @@ const AdminLabReports = () => {
     const fetchReports = async () => {
       try {
         const [reportsRes, statsRes] = await Promise.all([
-          axios.get("http://localhost:5000/api/lab-report/all", {
+          axios.get("${API}/api/lab-report/all", {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get("http://localhost:5000/api/lab-report/stats", {
+          axios.get("${API}/api/lab-report/stats", {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);
@@ -403,7 +403,7 @@ const AdminLabReports = () => {
 
   const getFullFileUrl = (filePath) => {
     if (!filePath) return "";
-    return `http://localhost:5000${
+    return `${API}${
       filePath.startsWith("/") ? "" : "/"
     }${filePath}`;
   };
@@ -430,7 +430,7 @@ const AdminLabReports = () => {
       }
 
       const res = await axios.put(
-        `http://localhost:5000/api/lab-report/${id}`,
+        `${API}/api/lab-report/${id}`,
         formData,
         {
           headers: {
@@ -476,7 +476,7 @@ const AdminLabReports = () => {
     if (!result.isConfirmed) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/lab-report/${id}`, {
+      await axios.delete(`${API}/api/lab-report/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

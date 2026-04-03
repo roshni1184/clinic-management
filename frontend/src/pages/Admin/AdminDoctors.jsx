@@ -19,7 +19,7 @@
 //         localStorage.getItem("adminToken");
 
 //       const res = await axios.get(
-//         "http://localhost:5000/api/admin/doctors",
+//         "${API}/api/admin/doctors",
 //         {
 //           headers: { Authorization: `Bearer ${token}` },
 //         }
@@ -51,7 +51,7 @@
 //         localStorage.getItem("adminToken");
 
 //       await axios.delete(
-//         `http://localhost:5000/api/admin/delete-doctor/${id}`,
+//         `${API}/api/admin/delete-doctor/${id}`,
 //         {
 //           headers: { Authorization: `Bearer ${token}` },
 //         }
@@ -110,7 +110,7 @@
 
 //         <div className="shadow-md rounded-lg">
 //           <DownloadButton
-//             url="http://localhost:5000/api/admin/download-doctors"
+//             url="${API}/api/admin/download-doctors"
 //             fileName="doctors-list.csv"
 //             title="⬇ Download Doctors"
 //           />
@@ -262,7 +262,7 @@ const AdminDoctors = () => {
         localStorage.getItem("adminToken");
 
       const res = await axios.get(
-        "http://localhost:5000/api/admin/doctors",
+        "${API}/api/admin/doctors",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -293,7 +293,7 @@ const AdminDoctors = () => {
         localStorage.getItem("adminToken");
 
       await axios.delete(
-        `http://localhost:5000/api/admin/delete-doctor/${deleteId}`,
+        `${API}/api/admin/delete-doctor/${deleteId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -348,7 +348,7 @@ const AdminDoctors = () => {
         </button>
 
         <DownloadButton
-          url="http://localhost:5000/api/admin/download-doctors"
+          url="${API}/api/admin/download-doctors"
           fileName="doctors-list.csv"
           title="⬇ Download Doctors"
         />

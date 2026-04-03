@@ -21,7 +21,7 @@ const DoctorProfile = () => {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:5000/api/doctors/me", {
+        const res = await axios.get("${API}/api/doctors/me", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -66,7 +66,7 @@ const DoctorProfile = () => {
       const token = localStorage.getItem("token");
 
       const res = await axios.put(
-        "http://localhost:5000/api/doctors/profile",
+        "${API}/api/doctors/profile",
         {
           name: doctor.name,
           email: doctor.email,

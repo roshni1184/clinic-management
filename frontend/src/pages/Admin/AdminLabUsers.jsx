@@ -16,7 +16,7 @@
 //   // Fetch lab users
 //   const fetchLabUsers = async () => {
 //     try {
-//       const res = await axios.get("http://localhost:5000/api/admin/lab-users", {
+//       const res = await axios.get("${API}/api/admin/lab-users", {
 //         headers: { Authorization: `Bearer ${token}` },
 //       });
 //       setLabUsers(res.data.labUsers || []);
@@ -37,7 +37,7 @@
 //     if (!window.confirm("Are you sure you want to delete this Lab User?")) return;
 
 //     try {
-//       await axios.delete(`http://localhost:5000/api/admin/delete-lab/${id}`, {
+//       await axios.delete(`${API}/api/admin/delete-lab/${id}`, {
 //         headers: { Authorization: `Bearer ${token}` },
 //       });
 
@@ -65,7 +65,7 @@
 //   const handleSaveEdit = async (id) => {
 //     try {
 //       const res = await axios.put(
-//         `http://localhost:5000/api/admin/update-lab/${id}`,
+//         `${API}/api/admin/update-lab/${id}`,
 //         editForm,
 //         { headers: { Authorization: `Bearer ${token}` } }
 //       );
@@ -234,7 +234,7 @@ const AdminLabUsers = () => {
   const fetchLabUsers = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/admin/lab-users",
+        "${API}/api/admin/lab-users",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -268,7 +268,7 @@ const AdminLabUsers = () => {
 
     try {
       await axios.delete(
-        `http://localhost:5000/api/admin/delete-lab/${id}`,
+        `${API}/api/admin/delete-lab/${id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
@@ -308,7 +308,7 @@ const AdminLabUsers = () => {
   const handleSaveEdit = async (id) => {
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/admin/update-lab/${id}`,
+        `${API}/api/admin/update-lab/${id}`,
         editForm,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -369,7 +369,7 @@ const AdminLabUsers = () => {
 
         <div className="shadow-md rounded-lg">
           <DownloadButton
-            url="http://localhost:5000/api/admin/download-labusers"
+            url="${API}/api/admin/download-labusers"
             fileName="lab-users-list.csv"
             title="⬇ Download Lab Users"
           />

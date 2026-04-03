@@ -28,7 +28,7 @@ const AdminSignup = () => {
       const token = localStorage.getItem("token"); // Admin token
 
       const res = await axios.post(
-        "http://localhost:5000/api/auth/adminsignup",
+        "${API}/api/auth/adminsignup",
         formData,
         {
           headers: {

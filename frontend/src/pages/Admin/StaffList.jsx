@@ -17,7 +17,7 @@
 //     try {
 //       const token = localStorage.getItem("token");
 
-//       const res = await axios.get("http://localhost:5000/api/employee", {
+//       const res = await axios.get("${API}/api/employee", {
 //         headers: {
 //           Authorization: `Bearer ${token}`,
 //         },
@@ -42,7 +42,7 @@
 //     try {
 //       const token = localStorage.getItem("token");
 
-//       await axios.delete(`http://localhost:5000/api/employee/${id}`, {
+//       await axios.delete(`${API}/api/employee/${id}`, {
 //         headers: {
 //           Authorization: `Bearer ${token}`,
 //         },
@@ -194,7 +194,7 @@ const StaffList = () => {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "http://localhost:5000/api/employee",
+        "${API}/api/employee",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -224,7 +224,7 @@ const StaffList = () => {
       const token = localStorage.getItem("token");
 
       await axios.delete(
-        `http://localhost:5000/api/employee/${deleteId}`,
+        `${API}/api/employee/${deleteId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

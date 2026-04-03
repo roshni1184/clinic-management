@@ -15,7 +15,7 @@ const PatientNotes = ({ userId }) => {
   const fetchNotes = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/patient-notes/by-user/${userId}`,
+        `${API}/api/patient-notes/by-user/${userId}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setNotes(res.data);
@@ -35,7 +35,7 @@ const PatientNotes = ({ userId }) => {
     if (!window.confirm("Are you sure?")) return;
     try {
       await axios.delete(
-        `http://localhost:5000/api/patient-notes/remove/${id}`,
+        `${API}/api/patient-notes/remove/${id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setNotes(notes.filter((n) => n._id !== id));
@@ -49,13 +49,13 @@ const PatientNotes = ({ userId }) => {
     try {
       if (selectedNote) {
         await axios.put(
-          `http://localhost:5000/api/patient-notes/update/${selectedNote._id}`,
+          `${API}/api/patient-notes/update/${selectedNote._id}`,
           formData,
           { headers: { Authorization: `Bearer ${token}` } }
         );
       } else {
         await axios.post(
-          `http://localhost:5000/api/patient-notes/create`,
+          `${API}/api/patient-notes/create`,
           { ...formData, userId },
           { headers: { Authorization: `Bearer ${token}` } }
         );

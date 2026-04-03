@@ -32,7 +32,7 @@ const TestimonialForm = ({ onClose, onSuccess }) => {
       setLoading(true);
 
       await axios.post(
-        "http://localhost:5000/api/testimonials",
+        "${API}/api/testimonials",
         form
       );
 

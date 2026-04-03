@@ -13,7 +13,7 @@ const SendLabTest = () => {
   useEffect(() => {
     const fetchAppointment = async () => {
       const res = await fetch(
-        `http://localhost:5000/api/appointments/doctor/appointment/${id}`,
+        `${API}/api/appointments/doctor/appointment/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -28,7 +28,7 @@ const SendLabTest = () => {
   const handleSend = async () => {
     if (!reportType) return alert("Select report type");
 
-    const res = await fetch("http://localhost:5000/api/lab-report/create", {
+    const res = await fetch("${API}/api/lab-report/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

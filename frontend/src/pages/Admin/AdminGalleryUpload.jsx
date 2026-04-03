@@ -16,7 +16,7 @@
 //   // =============================
 //   const fetchGallery = async () => {
 //     try {
-//       const res = await axios.get("http://localhost:5000/api/gallery");
+//       const res = await axios.get("${API}/api/gallery");
 //       setGallery(res.data);
 //     } catch (err) {
 //       console.error("Fetch error:", err);
@@ -47,13 +47,13 @@
 
 //       if (editingId) {
 //         await axios.put(
-//           `http://localhost:5000/api/gallery/${editingId}`,
+//           `${API}/api/gallery/${editingId}`,
 //           formData
 //         );
 //         alert("Updated successfully");
 //       } else {
 //         await axios.post(
-//           "http://localhost:5000/api/gallery/upload",
+//           "${API}/api/gallery/upload",
 //           formData
 //         );
 //         alert("Uploaded successfully");
@@ -79,7 +79,7 @@
 //     if (!window.confirm("Are you sure?")) return;
 
 //     try {
-//       await axios.delete(`http://localhost:5000/api/gallery/${id}`);
+//       await axios.delete(`${API}/api/gallery/${id}`);
 //       fetchGallery();
 //     } catch (error) {
 //       alert("Delete failed");
@@ -182,7 +182,7 @@
 //                 <tr key={item._id} className="border-b border-gray-700">
 //                   <td className="py-3 px-4">
 //                     <img
-//                       src={`http://localhost:5000/uploads/gallery/${item.image}`}
+//                       src={`${API}/uploads/gallery/${item.image}`}
 //                       alt="gallery"
 //                       className="w-32 h-20 object-cover rounded"
 //                     />
@@ -234,7 +234,7 @@ const AdminGalleryUploads = () => {
   const [deleteId, setDeleteId] = useState(null);
 
   const fetchGallery = async () => {
-    const res = await axios.get("http://localhost:5000/api/gallery");
+    const res = await axios.get("${API}/api/gallery");
     setGallery(res.data);
   };
 
@@ -255,13 +255,13 @@ const AdminGalleryUploads = () => {
 
       if (editingId) {
         await axios.put(
-          `http://localhost:5000/api/gallery/${editingId}`,
+          `${API}/api/gallery/${editingId}`,
           formData
         );
       } else {
         if (!selectedFile) return;
         await axios.post(
-          "http://localhost:5000/api/gallery/upload",
+          "${API}/api/gallery/upload",
           formData
         );
       }
@@ -296,7 +296,7 @@ const AdminGalleryUploads = () => {
 
   // ================= DELETE POPUP =================
   const confirmDelete = async () => {
-    await axios.delete(`http://localhost:5000/api/gallery/${deleteId}`);
+    await axios.delete(`${API}/api/gallery/${deleteId}`);
     setDeleteId(null);
     fetchGallery();
   };
@@ -333,7 +333,7 @@ const AdminGalleryUploads = () => {
               <tr key={item._id} className="border-b border-gray-700">
                 <td className="py-3 px-4">
                   <img
-                    src={`http://localhost:5000/uploads/gallery/${item.image}`}
+                    src={`${API}/uploads/gallery/${item.image}`}
                     alt="gallery"
                     className="w-32 h-20 object-cover rounded"
                   />

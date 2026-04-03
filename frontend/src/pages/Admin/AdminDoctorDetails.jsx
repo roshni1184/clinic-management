@@ -11,7 +11,7 @@ const AdminDoctorDetails = () => {
   const fetchDoctorDetails = async () => {
     try {
       const token = localStorage.getItem("token") || localStorage.getItem("adminToken");
-      const res = await axios.get(`http://localhost:5000/api/admin/doctor/${id}`, {
+      const res = await axios.get(`${API}/api/admin/doctor/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setDoctor(res.data.doctor);

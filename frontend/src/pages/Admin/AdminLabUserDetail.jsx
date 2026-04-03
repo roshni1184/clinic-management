@@ -15,7 +15,7 @@ const AdminLabUserDetail = () => {
       if (!id) return;
       try {
         const res = await axios.get(
-          `http://localhost:5000/api/admin/lab-user/${id}`,
+          `${API}/api/admin/lab-user/${id}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setUser(res.data.user);

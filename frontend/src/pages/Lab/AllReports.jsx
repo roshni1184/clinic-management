@@ -12,7 +12,7 @@
 //     const fetchReports = async () => {
 //       try {
 //         setLoading(true);
-//         const res = await axios.get("http://localhost:5000/api/lab-report/all", {
+//         const res = await axios.get("${API}/api/lab-report/all", {
 //           headers: { Authorization: `Bearer ${token}` },
 //         });
 
@@ -74,7 +74,7 @@
 //                   <td className="p-2 border">
 //                     {r.reportFile ? (
 //                       <a
-//                         href={`http://localhost:5000${r.reportFile}`}
+//                         href={`${API}${r.reportFile}`}
 //                         target="_blank"
 //                         rel="noopener noreferrer"
 //                         className="text-red-500 hover:underline"
@@ -127,7 +127,7 @@ const AllReports = () => {
     const fetchReports = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/lab-report/all",
+          "${API}/api/lab-report/all",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -176,7 +176,7 @@ const AllReports = () => {
       }
 
       const res = await axios.put(
-        `http://localhost:5000/api/lab-report/${id}`,
+        `${API}/api/lab-report/${id}`,
         formData,
         {
           headers: {
@@ -205,7 +205,7 @@ const AllReports = () => {
 
     try {
       await axios.delete(
-        `http://localhost:5000/api/lab-report/${id}`,
+        `${API}/api/lab-report/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -334,7 +334,7 @@ const AllReports = () => {
                       <button
                         onClick={() =>
                           setPreviewFile(
-                            `http://localhost:5000${r.reportFile}`
+                            `${API}${r.reportFile}`
                           )
                         }
                         className="text-red-500 hover:underline"

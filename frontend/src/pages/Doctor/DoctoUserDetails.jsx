@@ -19,7 +19,7 @@ const DoctorUserDetails = () => {
       }
 
       const res = await axios.get(
-        `http://localhost:5000/api/doctors/user/${id}`, // make sure this matches your backend route
+        `${API}/api/doctors/user/${id}`, // make sure this matches your backend route
         { headers: { Authorization: `Bearer ${token}` } }
       );
 

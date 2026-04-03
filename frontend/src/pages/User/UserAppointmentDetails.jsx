@@ -12,7 +12,7 @@ const UserAppointmentDetails = () => {
       try {
         const token = localStorage.getItem("token");
         const res = await axios.get(
-          `http://localhost:5000/api/appointments/user/${id}`,
+          `${API}/api/appointments/user/${id}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         if (res.data.success) {

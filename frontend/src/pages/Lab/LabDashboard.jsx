@@ -17,7 +17,7 @@
 //     const fetchStats = async () => {
 //       try {
 //         const res = await axios.get(
-//           "http://localhost:5000/api/lab-report/stats",
+//           "${API}/api/lab-report/stats",
 //           {
 //             headers: {
 //               Authorization: `Bearer ${token}`,
@@ -111,7 +111,7 @@ const LabDashboard = () => {
   const fetchReports = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/lab-report/all",
+        "${API}/api/lab-report/all",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -255,7 +255,7 @@ const LabDashboard = () => {
                         <button
                           onClick={() =>
                             setPreviewFile(
-                              `http://localhost:5000${r.file}`
+                              `${API}${r.file}`
                             )
                           }
                           className="text-blue-600 underline"

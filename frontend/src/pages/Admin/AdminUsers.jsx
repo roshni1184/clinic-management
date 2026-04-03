@@ -25,7 +25,7 @@
 //         localStorage.getItem("token");
 
 //       const res = await axios.get(
-//         "http://localhost:5000/api/admin/users",
+//         "${API}/api/admin/users",
 //         {
 //           headers: { Authorization: `Bearer ${token}` },
 //         }
@@ -65,7 +65,7 @@
 //         localStorage.getItem("token");
 
 //       const res = await axios.put(
-//         `http://localhost:5000/api/admin/update-user/${userId}`,
+//         `${API}/api/admin/update-user/${userId}`,
 //         editData,
 //         { headers: { Authorization: `Bearer ${token}` } }
 //       );
@@ -93,7 +93,7 @@
 //         localStorage.getItem("token");
 
 //       await axios.delete(
-//         `http://localhost:5000/api/admin/delete-user/${userId}`,
+//         `${API}/api/admin/delete-user/${userId}`,
 //         {
 //           headers: { Authorization: `Bearer ${token}` },
 //         }
@@ -140,7 +140,7 @@
 //         {/* Download Button */}
 //         <div className="shadow-lg rounded-lg">
 //           <DownloadButton
-//             url="http://localhost:5000/api/admin/download-patients"
+//             url="${API}/api/admin/download-patients"
 //             fileName="patients-list.csv"
 //             title="⬇ Download Patients"
 //           />
@@ -322,7 +322,7 @@ const AdminUsers = () => {
         localStorage.getItem("token");
 
       const res = await axios.get(
-        "http://localhost:5000/api/admin/users",
+        "${API}/api/admin/users",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -364,7 +364,7 @@ const AdminUsers = () => {
         localStorage.getItem("token");
 
       const res = await axios.put(
-        `http://localhost:5000/api/admin/update-user/${userId}`,
+        `${API}/api/admin/update-user/${userId}`,
         editData,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -391,7 +391,7 @@ const AdminUsers = () => {
         localStorage.getItem("token");
 
       await axios.delete(
-        `http://localhost:5000/api/admin/delete-user/${deleteId}`,
+        `${API}/api/admin/delete-user/${deleteId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -437,7 +437,7 @@ const AdminUsers = () => {
         </div>
 
         <DownloadButton
-          url="http://localhost:5000/api/admin/download-patients"
+          url="${API}/api/admin/download-patients"
           fileName="patients-list.csv"
           title="⬇ Download Patients"
         />

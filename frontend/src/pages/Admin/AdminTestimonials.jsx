@@ -16,7 +16,7 @@ const AdminTestimonials = () => {
       setLoading(true);   
 
       const res = await axios.get(
-        "http://localhost:5000/api/testimonials/all",
+        "${API}/api/testimonials/all",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -38,7 +38,7 @@ const AdminTestimonials = () => {
   const handleApprove = async (id) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/testimonials/approve/${id}`,
+        `${API}/api/testimonials/approve/${id}`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -54,7 +54,7 @@ const AdminTestimonials = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/testimonials/delete/${id}`,
+        `${API}/api/testimonials/delete/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

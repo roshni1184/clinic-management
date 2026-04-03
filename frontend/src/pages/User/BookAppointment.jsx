@@ -21,7 +21,7 @@
 //   useEffect(() => {
 //     const fetchDoctors = async () => {
 //       try {
-//         const res = await axios.get("http://localhost:5000/api/doctors");
+//         const res = await axios.get("${API}/api/doctors");
 //         setDoctors(res.data.doctors || []);
 //       } catch (err) {
 //         console.error("Error fetching doctors:", err);
@@ -127,7 +127,7 @@
 
 //       // ✅ Step 1: Create Appointment (Pending)
 //       const res = await axios.post(
-//         "http://localhost:5000/api/appointments",
+//         "${API}/api/appointments",
 //         {
 //           doctor: selectedDoctor,
 //           service: selectedService,
@@ -151,7 +151,7 @@
 
 //       // ✅ Step 2: Create Razorpay Order
 //       const orderRes = await axios.post(
-//         "http://localhost:5000/api/payment/create-order",
+//         "${API}/api/payment/create-order",
 //         { amount: fee },
 //         { headers: { Authorization: `Bearer ${token}` } }
 //       );
@@ -180,7 +180,7 @@
 //           try {
 //             // ✅ Step 4: Verify Payment
 //             const verifyRes = await axios.post(
-//               "http://localhost:5000/api/payment/verify-payment",
+//               "${API}/api/payment/verify-payment",
 //               {
 //                 appointmentId: appointment._id,
 //                 razorpay_order_id: response.razorpay_order_id,
@@ -450,7 +450,7 @@ export default function BookAppointment() {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/doctors");
+        const res = await axios.get("${API}/api/doctors");
         setDoctors(res.data.doctors || []);
       } catch (err) {
         console.error("Error fetching doctors:", err);
@@ -558,7 +558,7 @@ export default function BookAppointment() {
 
       // ✅ Step 1: Create Appointment (Pending)
       const res = await axios.post(
-        "http://localhost:5000/api/appointments",
+        "${API}/api/appointments",
         {
           doctor: selectedDoctor,
           service: selectedService,
@@ -582,7 +582,7 @@ export default function BookAppointment() {
 
       // ✅ Step 2: Create Razorpay Order
       const orderRes = await axios.post(
-        "http://localhost:5000/api/payment/create-order",
+        "${API}/api/payment/create-order",
         { amount: fee },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -610,7 +610,7 @@ export default function BookAppointment() {
         handler: async function (response) {
           try {
             const verifyRes = await axios.post(
-              "http://localhost:5000/api/payment/verify-payment",
+              "${API}/api/payment/verify-payment",
               {
                 appointmentId: appointment._id,
                 razorpay_order_id: response.razorpay_order_id,
@@ -870,7 +870,7 @@ export default function BookAppointment() {
 //   useEffect(() => {
 //     const fetchDoctors = async () => {
 //       try {
-//         const res = await axios.get("http://localhost:5000/api/doctors");
+//         const res = await axios.get("${API}/api/doctors");
 //         setDoctors(res.data.doctors || []);
 //       } catch (err) {
 //         console.error("Error fetching doctors:", err);
@@ -915,7 +915,7 @@ export default function BookAppointment() {
 //   const handlePayment = async (appointmentId, amount) => {
 //   try {
 //     const res = await axios.post(
-//       "http://localhost:5000/api/appointments/create-order",
+//       "${API}/api/appointments/create-order",
 //       { amount },
 //       { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
 //     );
@@ -931,7 +931,7 @@ export default function BookAppointment() {
 //       order_id: order.id,
 //       handler: async function (response) {
 //         await axios.post(
-//           "http://localhost:5000/api/appointments/verify-payment",
+//           "${API}/api/appointments/verify-payment",
 //           {
 //             appointmentId, // pass the booked appointment id
 //             razorpay_order_id: response.razorpay_order_id,
@@ -987,7 +987,7 @@ export default function BookAppointment() {
 
 //       // 1️⃣ Book appointment (status pending)
 //       const res = await axios.post(
-//         "http://localhost:5000/api/appointments",
+//         "${API}/api/appointments",
 //         {
 //           doctor: selectedDoctor,
 //           service: selectedService,

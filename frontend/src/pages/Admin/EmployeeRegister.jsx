@@ -45,7 +45,7 @@ const EmployeeRegister = () => {
       const token = localStorage.getItem("token");
 
       const res = await axios.post(
-        "http://localhost:5000/api/employee/register",
+        "${API}/api/employee/register",
         formData,
         {
           headers: { Authorization: `Bearer ${token}` },

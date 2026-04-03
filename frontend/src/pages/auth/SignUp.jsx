@@ -25,7 +25,7 @@ const Signup = () => {
     setError("");
 
     try {
-      await axios.post("http://localhost:5000/api/auth/signup", formData, {
+      await axios.post("${API}/api/auth/signup", formData, {
         headers: { "Content-Type": "application/json" },
       });
 

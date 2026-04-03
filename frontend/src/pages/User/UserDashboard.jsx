@@ -27,7 +27,7 @@ const UserDashboard = () => {
         return;
       }
 
-      const res = await axios.get("http://localhost:5000/api/user/me", {
+      const res = await axios.get("${API}/api/user/me", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -50,7 +50,7 @@ const UserDashboard = () => {
         return;
       }
 
-      const res = await axios.get("http://localhost:5000/api/appointments/me", {
+      const res = await axios.get("${API}/api/appointments/me", {
         headers: { Authorization: `Bearer ${token}` },
       });
 

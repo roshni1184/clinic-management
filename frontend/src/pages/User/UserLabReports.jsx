@@ -26,7 +26,7 @@ const UserLabReports = () => {
         }
 
         const res = await axios.get(
-          `http://localhost:5000/api/lab-report/user/${userId}`
+          `${API}/api/lab-report/user/${userId}`
         );
 
         if (res.data.success) {
@@ -57,7 +57,7 @@ const UserLabReports = () => {
 
   const getFullFileUrl = (filePath) => {
     if (!filePath) return "";
-    return `http://localhost:5000${filePath.startsWith("/") ? "" : "/"}${filePath}`;
+    return `${API}${filePath.startsWith("/") ? "" : "/"}${filePath}`;
   };
 
   if (loading)

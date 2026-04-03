@@ -17,7 +17,7 @@ const UserProfile = () => {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:5000/api/user/me", {
+        const res = await axios.get("${API}/api/user/me", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -56,7 +56,7 @@ const UserProfile = () => {
       const token = localStorage.getItem("token");
 
       const res = await axios.put(
-        "http://localhost:5000/api/user/profile",
+        "${API}/api/user/profile",
         {
           name: user.name,
           email: user.email,

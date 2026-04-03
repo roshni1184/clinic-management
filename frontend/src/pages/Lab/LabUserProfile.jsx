@@ -19,7 +19,7 @@ const LabUserProfile = () => {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:5000/api/lab-user/me", {
+        const res = await axios.get("${API}/api/lab-user/me", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -58,7 +58,7 @@ const LabUserProfile = () => {
       const token = localStorage.getItem("token");
 
       const res = await axios.put(
-        "http://localhost:5000/api/lab-user/userprofile",
+        "${API}/api/lab-user/userprofile",
         {
           name: user.name,
           email: user.email,

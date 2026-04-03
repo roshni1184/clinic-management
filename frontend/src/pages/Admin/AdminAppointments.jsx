@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import API from "../utils/api";
 
 const AdminAppointment = () => {
   const [groupedAppointments, setGroupedAppointments] = useState({});
@@ -20,7 +21,7 @@ const AdminAppointment = () => {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "http://localhost:5000/api/appointments/all",
+        "${API}/api/appointments/all",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -70,7 +71,7 @@ const AdminAppointment = () => {
       const token = localStorage.getItem("token");
 
       await axios.delete(
-        `http://localhost:5000/api/appointments/admin/delete/${deleteId}`,
+        `${API}/api/appointments/admin/delete/${deleteId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

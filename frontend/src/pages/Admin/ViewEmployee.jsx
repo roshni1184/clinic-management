@@ -16,7 +16,7 @@ const ViewEmployee = () => {
         const token = localStorage.getItem("token");
 
         const res = await axios.get(
-          `http://localhost:5000/api/employee/${id}`,
+          `${API}/api/employee/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

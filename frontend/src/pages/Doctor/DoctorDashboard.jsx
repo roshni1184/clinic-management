@@ -26,7 +26,7 @@ const DoctorDashboard = () => {
   const fetchDoctorInfo = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:5000/api/doctors/me", {
+      const res = await axios.get("${API}/api/doctors/me", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setDoctorName(res.data.name || "");
@@ -41,7 +41,7 @@ const DoctorDashboard = () => {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "http://localhost:5000/api/appointments/doctor/appointments",
+        "${API}/api/appointments/doctor/appointments",
         { headers: { Authorization: `Bearer ${token}` } }
       );
 

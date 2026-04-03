@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 
+
 const AdminAppointmentDetails = () => {
   const { id } = useParams();
   const [appointment, setAppointment] = useState(null);
@@ -12,7 +13,7 @@ const AdminAppointmentDetails = () => {
   useEffect(() => {
     const fetchAppointment = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/appointments/${id}`, {
+        const res = await fetch(`${API}/api/appointments/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();

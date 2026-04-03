@@ -11,7 +11,7 @@
 //   // Fetch pending reports
 //   const fetchPending = async () => {
 //     try {
-//       const res = await axios.get("http://localhost:5000/api/lab-report/pending", {
+//       const res = await axios.get("${API}/api/lab-report/pending", {
 //         headers: { Authorization: `Bearer ${token}` },
 //       });
 //       setReports(res.data.reports || []);
@@ -32,7 +32,7 @@
 //       if (file) formData.append("reportFile", file);
 
 //       await axios.put(
-//         `http://localhost:5000/api/lab-report/update/${reportId}`,
+//         `${API}/api/lab-report/update/${reportId}`,
 //         formData,
 //         {
 //           headers: {
@@ -122,7 +122,7 @@ const LabPendingReports = () => {
   const fetchPending = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/lab-report/pending",
+        "${API}/api/lab-report/pending",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -149,7 +149,7 @@ const LabPendingReports = () => {
       }
 
       await axios.put(
-        `http://localhost:5000/api/lab-report/update/${reportId}`,
+        `${API}/api/lab-report/update/${reportId}`,
         formData,
         {
           headers: {

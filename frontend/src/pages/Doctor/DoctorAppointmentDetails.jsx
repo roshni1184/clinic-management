@@ -20,7 +20,7 @@ const DoctorAppointmentDetails = () => {
   useEffect(() => {
     const fetchAll = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/appointments/doctor/appointment/${id}`, {
+        const res = await fetch(`${API}/api/appointments/doctor/appointment/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
 
@@ -41,7 +41,7 @@ const DoctorAppointmentDetails = () => {
 
     const fetchPatientNotes = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/patient-notes/${id}`, {
+        const res = await fetch(`${API}/api/patient-notes/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -51,7 +51,7 @@ const DoctorAppointmentDetails = () => {
 
     const fetchLabReports = async (patientMongoId) => {
       try {
-        const res = await fetch(`http://localhost:5000/api/lab-report/doctor/${patientMongoId}`, {
+        const res = await fetch(`${API}/api/lab-report/doctor/${patientMongoId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -71,7 +71,7 @@ const DoctorAppointmentDetails = () => {
       return alert("Add at least one note");
 
     try {
-      const res = await fetch(`http://localhost:5000/api/patient-notes/${id}`, {
+      const res = await fetch(`${API}/api/patient-notes/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({
@@ -105,7 +105,7 @@ const DoctorAppointmentDetails = () => {
   };
 
   const getFullFileUrl = (file) =>
-    `http://localhost:5000${file.startsWith("/") ? "" : "/"}${file}`;
+    `${API}${file.startsWith("/") ? "" : "/"}${file}`;
 
   if (error)
     return <p className="text-center text-red-600 text-xl mt-10">{error}</p>;

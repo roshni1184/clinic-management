@@ -17,7 +17,7 @@ const DoctorUsers = () => {
         return;
       }
 
-      const res = await axios.get("http://localhost:5000/api/doctors/users", {
+      const res = await axios.get("${API}/api/doctors/users", {
         headers: { Authorization: `Bearer ${token}` },
       });
 

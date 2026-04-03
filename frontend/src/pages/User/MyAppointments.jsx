@@ -21,7 +21,7 @@ const MyAppointments = () => {
         return;
       }
 
-      const res = await axios.get("http://localhost:5000/api/appointments/me", {
+      const res = await axios.get("${API}/api/appointments/me", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -45,7 +45,7 @@ const MyAppointments = () => {
       const token = localStorage.getItem("token");
 
       await axios.patch(
-        `http://localhost:5000/api/appointments/cancel/${id}`,
+        `${API}/api/appointments/cancel/${id}`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );

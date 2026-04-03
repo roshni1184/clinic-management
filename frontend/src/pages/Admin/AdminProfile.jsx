@@ -17,7 +17,7 @@ const AdminProfile = () => {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:5000/api/admin/me", {
+        const res = await axios.get("${API}/api/admin/me", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -58,7 +58,7 @@ const AdminProfile = () => {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.put(
-        "http://localhost:5000/api/admin/profile",
+        "${API}/api/admin/profile",
         {
           name: admin.name,
           email: admin.email,

@@ -5,7 +5,7 @@ const Users = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/admin/users", {
+    axios.get("${API}/api/admin/users", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },

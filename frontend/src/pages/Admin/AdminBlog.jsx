@@ -16,7 +16,7 @@
 //   // Fetch all blogs
 //   const fetchBlogs = async () => {
 //     try {
-//       const res = await axios.get("http://localhost:5000/api/admin/blogs");
+//       const res = await axios.get("${API}/api/admin/blogs");
 //       setBlogs(res.data);
 //     } catch (err) {
 //       console.error("Failed to fetch blogs:", err);
@@ -62,14 +62,14 @@
 //     try {
 //       if (editingBlogId) {
 //         const res = await axios.put(
-//           `http://localhost:5000/api/admin/update-blog/${editingBlogId}`,
+//           `${API}/api/admin/update-blog/${editingBlogId}`,
 //           payload,
 //           { headers: { Authorization: `Bearer ${token}` } }
 //         );
 //         alert(res.data.message || "Blog updated successfully!");
 //       } else {
 //         const res = await axios.post(
-//           "http://localhost:5000/api/admin/createblog",
+//           "${API}/api/admin/createblog",
 //           payload,
 //           { headers: { Authorization: `Bearer ${token}` } }
 //         );
@@ -106,7 +106,7 @@
 //   const handleDelete = async (id) => {
 //     if (!window.confirm("Are you sure you want to delete this blog?")) return;
 //     try {
-//       await axios.delete(`http://localhost:5000/api/admin/delete-blog/${id}`, {
+//       await axios.delete(`${API}/api/admin/delete-blog/${id}`, {
 //         headers: { Authorization: `Bearer ${token}` },
 //       });
 //       fetchBlogs();
@@ -307,7 +307,7 @@
 
 //   const fetchBlogs = async () => {
 //     try {
-//       const res = await axios.get("http://localhost:5000/api/admin/blogs");
+//       const res = await axios.get("${API}/api/admin/blogs");
 //       setBlogs(res.data);
 //     } catch (err) {
 //       console.error("Failed to fetch blogs:", err);
@@ -374,7 +374,7 @@
 //   try {
 //     if (editingBlogId) {
 //       const res = await axios.put(
-//         `http://localhost:5000/api/admin/update-blog/${editingBlogId}`,
+//         `${API}/api/admin/update-blog/${editingBlogId}`,
 //         formData,
 //         {
 //           headers: {
@@ -387,7 +387,7 @@
 //       alert(res.data.message || "Blog updated successfully!");
 //     } else {
 //       const res = await axios.post(
-//         "http://localhost:5000/api/admin/createblog",
+//         "${API}/api/admin/createblog",
 //         formData,
 //         {
 //           headers: {
@@ -440,7 +440,7 @@
 //     try {
 
 //       await axios.delete(
-//         `http://localhost:5000/api/admin/delete-blog/${deleteId}`,
+//         `${API}/api/admin/delete-blog/${deleteId}`,
 //         {
 //           headers: { Authorization: `Bearer ${token}` },
 //         }
@@ -685,6 +685,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import API from "../utils/api";
 
 const AdminBlog = () => {
 
@@ -705,7 +706,7 @@ const AdminBlog = () => {
 
   const fetchBlogs = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/admin/blogs");
+      const res = await axios.get("${API}/api/admin/blogs");
       setBlogs(res.data);
     } catch (err) {
       console.error("Failed to fetch blogs:", err);
@@ -771,7 +772,7 @@ const AdminBlog = () => {
     try {
       if (editingBlogId) {
         const res = await axios.put(
-          `http://localhost:5000/api/admin/update-blog/${editingBlogId}`,
+          `${API}/api/admin/update-blog/${editingBlogId}`,
           formData,
           {
             headers: {
@@ -784,7 +785,7 @@ const AdminBlog = () => {
         alert(res.data.message || "Blog updated successfully!");
       } else {
         const res = await axios.post(
-          "http://localhost:5000/api/admin/createblog",
+          "${API}/api/admin/createblog",
           formData,
           {
             headers: {
@@ -837,7 +838,7 @@ const AdminBlog = () => {
     try {
 
       await axios.delete(
-        `http://localhost:5000/api/admin/delete-blog/${deleteId}`,
+        `${API}/api/admin/delete-blog/${deleteId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -997,7 +998,7 @@ const AdminBlog = () => {
                   {/* ✅ FIXED IMAGE PATH */}
                   {blog.image ? (
                     <img
-                      src={`http://localhost:5000/${blog.image}`}
+                      src={`${API}/${blog.image}`}
                       alt=""
                       className="w-24 h-16 object-cover"
                     />

@@ -65,13 +65,13 @@ const DoctorRegistration = ({ doctor, onSuccess }) => {
       let res;
       if (doctor) {
         res = await axios.put(
-          `http://localhost:5000/api/admin/update-doctor/${doctor._id}`,
+          `${API}/api/admin/update-doctor/${doctor._id}`,
           payload,
           { headers: { Authorization: `Bearer ${token}` } }
         );
       } else {
         res = await axios.post(
-          "http://localhost:5000/api/admin/register-doctor",
+          "${API}/api/admin/register-doctor",
           payload,
           { headers: { Authorization: `Bearer ${token}` } }
         );
