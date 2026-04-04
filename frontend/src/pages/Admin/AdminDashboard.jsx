@@ -49,7 +49,7 @@ const AdminDashboard = () => {
         });
 
         // Fetch All Appointments
-        const apptRes = await API.geT(
+        const apptRes = await API.get(
           `/appointments/all`,
           {
             headers: { Authorization: `Bearer ${token}` },
