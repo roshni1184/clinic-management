@@ -1,5 +1,5 @@
 // import React, { useEffect, useState } from "react";
-// import axios from "axios";
+// 
 // import { useNavigate } from "react-router-dom"; // ✅ ADD
 
 // const LabDashboard = () => {
@@ -16,8 +16,8 @@
 //   useEffect(() => {
 //     const fetchStats = async () => {
 //       try {
-//         const res = await axios.get(
-//           "${API}/api/lab-report/stats",
+//         const res = await API.get(
+//           "/lab-report/stats",
 //           {
 //             headers: {
 //               Authorization: `Bearer ${token}`,
@@ -86,8 +86,8 @@
 
 
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import API from "../utils/api"; 
+
+import API from "../../api/api"; 
 
 
 const LabDashboard = () => {
@@ -112,8 +112,8 @@ const LabDashboard = () => {
   // Fetch Reports
   const fetchReports = async () => {
     try {
-      const res = await axios.get(
-        `${API}/api/lab-report/all`,
+      const res = await API.get(
+        `/lab-report/all`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

@@ -2,7 +2,7 @@
 
 
 // import React, { useState, useEffect } from "react";
-// import axios from "axios";
+// 
 
 // const AdminGalleryUploads = () => {
 //   const [gallery, setGallery] = useState([]);
@@ -16,7 +16,7 @@
 //   // =============================
 //   const fetchGallery = async () => {
 //     try {
-//       const res = await axios.get("${API}/api/gallery");
+//       const res = await API.get("/gallery");
 //       setGallery(res.data);
 //     } catch (err) {
 //       console.error("Fetch error:", err);
@@ -46,14 +46,14 @@
 //       setLoading(true);
 
 //       if (editingId) {
-//         await axios.put(
-//           `${API}/api/gallery/${editingId}`,
+//         await API.put(
+//           `/gallery/${editingId}`,
 //           formData
 //         );
 //         alert("Updated successfully");
 //       } else {
-//         await axios.post(
-//           "${API}/api/gallery/upload",
+//         await API.post(
+//           "/gallery/upload",
 //           formData
 //         );
 //         alert("Uploaded successfully");
@@ -79,7 +79,7 @@
 //     if (!window.confirm("Are you sure?")) return;
 
 //     try {
-//       await axios.delete(`${API}/api/gallery/${id}`);
+//       await API.delete(`/gallery/${id}`);
 //       fetchGallery();
 //     } catch (error) {
 //       alert("Delete failed");
@@ -222,8 +222,8 @@
 
 
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import API from "../utils/api"; 
+
+import API from "../../api/api"; 
 
 const AdminGalleryUploads = () => {
   const [gallery, setGallery] = useState([]);
@@ -235,7 +235,7 @@ const AdminGalleryUploads = () => {
   const [deleteId, setDeleteId] = useState(null);
 
   const fetchGallery = async () => {
-    const res = await axios.get(`${API}/api/gallery`);
+    const res = await API.get(`/gallery`);
     setGallery(res.data);
   };
 
@@ -255,14 +255,14 @@ const AdminGalleryUploads = () => {
       setLoading(true);
 
       if (editingId) {
-        await axios.put(
-          `${API}/api/gallery/${editingId}`,
+        await API.put(
+          `/gallery/${editingId}`,
           formData
         );
       } else {
         if (!selectedFile) return;
-        await axios.post(
-          `${API}/api/gallery/upload`,
+        await API.post(
+          `/gallery/upload`,
           formData
         );
       }
@@ -297,7 +297,7 @@ const AdminGalleryUploads = () => {
 
   // ================= DELETE POPUP =================
   const confirmDelete = async () => {
-    await axios.delete(`${API}/api/gallery/${deleteId}`);
+    await API.delete(`/gallery/${deleteId}`);
     setDeleteId(null);
     fetchGallery();
   };

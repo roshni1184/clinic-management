@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import axios from "axios";
-import API from "../utils/api"; 
+
+import API from "../../api/api"; 
 
 
 const DoctorUserDetails = () => {
@@ -20,8 +20,8 @@ const DoctorUserDetails = () => {
         return;
       }
 
-      const res = await axios.get(
-        `${API}/api/doctors/user/${id}`, // make sure this matches your backend route
+      const res = await API.get(
+        `/doctors/user/${id}`, // make sure this matches your backend route
         { headers: { Authorization: `Bearer ${token}` } }
       );
 

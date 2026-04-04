@@ -2,10 +2,10 @@
 
 
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom"; // ✅ ADDED
-import API from "../utils/api"; 
+import API from "../../api/api"; 
 
 
 export default function BookAppointment() {
@@ -30,7 +30,7 @@ export default function BookAppointment() {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const res = await axios.get(`${API}/api/doctors`);
+        const res = await API.get(`/doctors`);
         setDoctors(res.data.doctors || []);
       } catch (err) {
         console.error("Error fetching doctors:", err);
@@ -137,8 +137,8 @@ export default function BookAppointment() {
       }
 
       // ✅ Step 1: Create Appointment (Pending)
-      const res = await axios.post(
-        `${API}/api/appointments`,
+      const res = await API.post(
+        `/appointments`,
         {
           doctor: selectedDoctor,
           service: selectedService,
@@ -161,8 +161,8 @@ export default function BookAppointment() {
       const appointment = res.data.appointment;
 
       // ✅ Step 2: Create Razorpay Order
-      const orderRes = await axios.post(
-        `${API}/api/payment/create-order`,
+      const orderRes = await API.post(
+        `/payment/create-order`,
         { amount: fee },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -189,8 +189,8 @@ export default function BookAppointment() {
         order_id: order.id,
         handler: async function (response) {
           try {
-            const verifyRes = await axios.post(
-              `${API}/api/payment/verify-payment`,
+            const verifyRes = await API.post(
+              `/payment/verify-payment`,
               {
                 appointmentId: appointment._id,
                 razorpay_order_id: response.razorpay_order_id,
@@ -427,7 +427,7 @@ export default function BookAppointment() {
 
 
 // import React, { useState, useEffect } from "react";
-// import axios from "axios";
+// 
 // import Swal from "sweetalert2";
 
 // export default function BookAppointment() {
@@ -450,7 +450,7 @@ export default function BookAppointment() {
 //   useEffect(() => {
 //     const fetchDoctors = async () => {
 //       try {
-//         const res = await axios.get("${API}/api/doctors");
+//         const res = await API.get("/doctors");
 //         setDoctors(res.data.doctors || []);
 //       } catch (err) {
 //         console.error("Error fetching doctors:", err);
@@ -494,8 +494,8 @@ export default function BookAppointment() {
 //   // Razorpay Checkout
 //   const handlePayment = async (appointmentId, amount) => {
 //   try {
-//     const res = await axios.post(
-//       "${API}/api/appointments/create-order",
+//     const res = await API.post(
+//       "/appointments/create-order",
 //       { amount },
 //       { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
 //     );
@@ -510,8 +510,8 @@ export default function BookAppointment() {
 //       description: "Appointment Payment",
 //       order_id: order.id,
 //       handler: async function (response) {
-//         await axios.post(
-//           "${API}/api/appointments/verify-payment",
+//         await API.post(
+//           "/appointments/verify-payment",
 //           {
 //             appointmentId, // pass the booked appointment id
 //             razorpay_order_id: response.razorpay_order_id,
@@ -566,8 +566,8 @@ export default function BookAppointment() {
 //       }
 
 //       // 1️⃣ Book appointment (status pending)
-//       const res = await axios.post(
-//         "${API}/api/appointments",
+//       const res = await API.post(
+//         "/appointments",
 //         {
 //           doctor: selectedDoctor,
 //           service: selectedService,

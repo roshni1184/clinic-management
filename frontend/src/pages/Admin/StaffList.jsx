@@ -1,5 +1,5 @@
 // import React, { useEffect, useState } from "react";
-// import axios from "axios";
+// 
 // import { useNavigate } from "react-router-dom";
 
 // const StaffList = () => {
@@ -17,7 +17,7 @@
 //     try {
 //       const token = localStorage.getItem("token");
 
-//       const res = await axios.get("${API}/api/employee", {
+//       const res = await API.get("/employee", {
 //         headers: {
 //           Authorization: `Bearer ${token}`,
 //         },
@@ -42,7 +42,7 @@
 //     try {
 //       const token = localStorage.getItem("token");
 
-//       await axios.delete(`${API}/api/employee/${id}`, {
+//       await API.delete(`/employee/${id}`, {
 //         headers: {
 //           Authorization: `Bearer ${token}`,
 //         },
@@ -172,9 +172,9 @@
 
 
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import { useNavigate } from "react-router-dom";
-import API from "../utils/api"; 
+import API from "../../api/api"; 
 
 
 const StaffList = () => {
@@ -195,8 +195,8 @@ const StaffList = () => {
 
       const token = localStorage.getItem("token");
 
-      const res = await axios.get(
-        `${API}/api/employee`,
+      const res = await API.get(
+        `/employee`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -225,8 +225,8 @@ const StaffList = () => {
 
       const token = localStorage.getItem("token");
 
-      await axios.delete(
-        `${API}/api/employee/${deleteId}`,
+      await API.delete(
+        `/employee/${deleteId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

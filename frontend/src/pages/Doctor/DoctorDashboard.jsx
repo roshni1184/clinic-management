@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import API from "../utils/api"; 
+
+import API from "../../api/api"; 
 
 
 const DoctorDashboard = () => {
@@ -28,7 +28,7 @@ const DoctorDashboard = () => {
   const fetchDoctorInfo = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("${API}/api/doctors/me", {
+      const res = await API.get("/doctors/me", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setDoctorName(res.data.name || "");
@@ -42,8 +42,8 @@ const DoctorDashboard = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await axios.get(
-        `${API}/api/appointments/doctor/appointments`,
+      const res = await API.get(
+        `/appointments/doctor/appointments`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
 

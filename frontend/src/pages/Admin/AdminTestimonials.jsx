@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import API from "../utils/api"; 
+
+import API from "../../api/api"; 
 
 
 const AdminTestimonials = () => {
@@ -17,8 +17,8 @@ const AdminTestimonials = () => {
     try {
       setLoading(true);   
 
-      const res = await axios.get(
-        `${API}/api/testimonials/all`,
+      const res = await API.get(
+        `/testimonials/all`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -39,8 +39,8 @@ const AdminTestimonials = () => {
   /* ✅ Approve */
   const handleApprove = async (id) => {
     try {
-      await axios.put(
-        `${API}/api/testimonials/approve/${id}`,
+      await API.put(
+        `/testimonials/approve/${id}`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -55,8 +55,8 @@ const AdminTestimonials = () => {
   /* ❌ Delete */
   const handleDelete = async (id) => {
     try {
-      await axios.delete(
-        `${API}/api/testimonials/delete/${id}`,
+      await API.delete(
+        `/testimonials/delete/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

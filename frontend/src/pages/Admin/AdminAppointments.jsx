@@ -1,8 +1,8 @@
 
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import { useNavigate } from "react-router-dom";
-import API from "../utils/api"; 
+import API from "../../api/api"; 
 
 const AdminAppointment = () => {
   const [groupedAppointments, setGroupedAppointments] = useState({});
@@ -20,8 +20,8 @@ const AdminAppointment = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await axios.get(
-        `${API}/api/appointments/all`,
+      const res = await API.get(
+        `/appointments/all`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -70,8 +70,8 @@ const AdminAppointment = () => {
     try {
       const token = localStorage.getItem("token");
 
-      await axios.delete(
-        `${API}/api/appointments/admin/delete/${deleteId}`,
+      await API.delete(
+        `/appointments/admin/delete/${deleteId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

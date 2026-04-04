@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+
 import API from "../utils/api"
 import { Link } from "react-router-dom";
 
@@ -12,7 +12,7 @@ const Gallery = () => {
 
   const fetchGallery = async () => {
     try {
-     const res = await axios.get(`${API}/api/gallery`);
+     const res = await API.get(`/gallery`);
       setGalleryItems(res.data);
     } catch (error) {
       console.error("Error fetching gallery", error);

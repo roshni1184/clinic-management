@@ -1,5 +1,5 @@
 // import React, { useEffect, useState } from "react";
-// import axios from "axios";
+// 
 // import { useNavigate } from "react-router-dom";
 
 // const AdminLabUsers = () => {
@@ -16,7 +16,7 @@
 //   // Fetch lab users
 //   const fetchLabUsers = async () => {
 //     try {
-//       const res = await axios.get("${API}/api/admin/lab-users", {
+//       const res = await API.get("/admin/lab-users", {
 //         headers: { Authorization: `Bearer ${token}` },
 //       });
 //       setLabUsers(res.data.labUsers || []);
@@ -37,7 +37,7 @@
 //     if (!window.confirm("Are you sure you want to delete this Lab User?")) return;
 
 //     try {
-//       await axios.delete(`${API}/api/admin/delete-lab/${id}`, {
+//       await API.delete(`/admin/delete-lab/${id}`, {
 //         headers: { Authorization: `Bearer ${token}` },
 //       });
 
@@ -64,8 +64,8 @@
 //   // Save changes
 //   const handleSaveEdit = async (id) => {
 //     try {
-//       const res = await axios.put(
-//         `${API}/api/admin/update-lab/${id}`,
+//       const res = await API.put(
+//         `/admin/update-lab/${id}`,
 //         editForm,
 //         { headers: { Authorization: `Bearer ${token}` } }
 //       );
@@ -215,8 +215,8 @@
 
 
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import API from "../utils/api"; 
+
+import API from "../../api/api"; 
 import { useNavigate } from "react-router-dom";
 import DownloadButton from "../../components/DownloadButton";
 import Swal from "sweetalert2";
@@ -234,8 +234,8 @@ const AdminLabUsers = () => {
 
   const fetchLabUsers = async () => {
     try {
-      const res = await axios.get(
-        `${API}/api/admin/lab-users`,
+      const res = await API.get(
+        `/admin/lab-users`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -268,8 +268,8 @@ const AdminLabUsers = () => {
     if (!result.isConfirmed) return;
 
     try {
-      await axios.delete(
-        `${API}/api/admin/delete-lab/${id}`,
+      await API.delete(
+        `/admin/delete-lab/${id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
@@ -308,8 +308,8 @@ const AdminLabUsers = () => {
 
   const handleSaveEdit = async (id) => {
     try {
-      const res = await axios.put(
-        `${API}/api/admin/update-lab/${id}`,
+      const res = await API.put(
+        `/admin/update-lab/${id}`,
         editForm,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -370,7 +370,7 @@ const AdminLabUsers = () => {
 
         <div className="shadow-md rounded-lg">
           <DownloadButton
-            url="${API}/api/admin/download-labusers"
+            url="/admin/download-labusers"
             fileName="lab-users-list.csv"
             title="⬇ Download Lab Users"
           />

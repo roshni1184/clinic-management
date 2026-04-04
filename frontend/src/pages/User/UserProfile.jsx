@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+
 import { toast, Toaster } from "react-hot-toast";
-import API from "../utils/api"; 
+import API from "../../api/api"; 
 
 const UserProfile = () => {
   const [user, setUser] = useState({
@@ -18,7 +18,7 @@ const UserProfile = () => {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get(`${API}/api/user/me`, {
+        const res = await API.get(`/user/me`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -56,8 +56,8 @@ const UserProfile = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await axios.put(
-        `${API}/api/user/profile`,
+      const res = await API.put(
+        `/user/profile`,
         {
           name: user.name,
           email: user.email,

@@ -1,6 +1,6 @@
 
 // import React, { useEffect, useState } from "react";
-// import axios from "axios";
+// 
 // import { Link } from "react-router-dom";
 // import DoctorRegistration from "./DoctorRegistration";
 // import DownloadButton from "../../components/DownloadButton";
@@ -18,8 +18,8 @@
 //         localStorage.getItem("token") ||
 //         localStorage.getItem("adminToken");
 
-//       const res = await axios.get(
-//         "${API}/api/admin/doctors",
+//       const res = await API.get(
+//         "/admin/doctors",
 //         {
 //           headers: { Authorization: `Bearer ${token}` },
 //         }
@@ -50,8 +50,8 @@
 //         localStorage.getItem("token") ||
 //         localStorage.getItem("adminToken");
 
-//       await axios.delete(
-//         `${API}/api/admin/delete-doctor/${id}`,
+//       await API.delete(
+//         `/admin/delete-doctor/${id}`,
 //         {
 //           headers: { Authorization: `Bearer ${token}` },
 //         }
@@ -110,7 +110,7 @@
 
 //         <div className="shadow-md rounded-lg">
 //           <DownloadButton
-//             url="${API}/api/admin/download-doctors"
+//             url="/admin/download-doctors"
 //             fileName="doctors-list.csv"
 //             title="⬇ Download Doctors"
 //           />
@@ -241,8 +241,8 @@
 
 
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import API from "../utils/api"; 
+
+import API from "../../api/api"; 
 import { Link } from "react-router-dom";
 import DoctorRegistration from "./DoctorRegistration";
 import DownloadButton from "../../components/DownloadButton";
@@ -262,8 +262,8 @@ const AdminDoctors = () => {
         localStorage.getItem("token") ||
         localStorage.getItem("adminToken");
 
-      const res = await axios.get(
-        `${API}/api/admin/doctors`,
+      const res = await API.get(
+        `/admin/doctors`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -293,8 +293,8 @@ const AdminDoctors = () => {
         localStorage.getItem("token") ||
         localStorage.getItem("adminToken");
 
-      await axios.delete(
-        `${API}/api/admin/delete-doctor/${deleteId}`,
+      await API.delete(
+        `/admin/delete-doctor/${deleteId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -349,7 +349,7 @@ const AdminDoctors = () => {
         </button>
 
         <DownloadButton
-          url={`${API}/api/admin/download-doctors`} 
+          url={`/admin/download-doctors`} 
           fileName="doctors-list.csv"
           title="⬇ Download Doctors"
         />

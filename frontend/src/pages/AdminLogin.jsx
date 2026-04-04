@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
-import API from "../utils/api"; 
+
+import API from "../api/api"; 
 
 export default function AdminLogin({ setAuth }) {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -13,7 +13,7 @@ export default function AdminLogin({ setAuth }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${API}/api/auth/login`, formData);
+      const res = await API.post(`/auth/login`, formData);
       if (res.data.user.role !== "admin") {
         setError("Only admin can login");
         return;

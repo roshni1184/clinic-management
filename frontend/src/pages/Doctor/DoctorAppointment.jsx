@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import { useNavigate } from "react-router-dom";
-import API from "../utils/api"; 
+import API from "../../api/api"; 
 
 
 
@@ -33,8 +33,8 @@ const DoctorAppointments = () => {
           return;
         }
 
-        const res = await axios.get(
-          `${API}/api/appointments/doctor/appointments`,
+        const res = await API.get(
+          `/appointments/doctor/appointments`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
 
@@ -69,8 +69,8 @@ const DoctorAppointments = () => {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.put(
-        `${API}/api/appointments/update-status/${apptId}`,
+      const res = await API.put(
+        `/appointments/update-status/${apptId}`,
         { status: newStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );

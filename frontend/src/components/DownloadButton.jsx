@@ -1,11 +1,11 @@
 import React from "react";
-import axios from "axios";
+
 
 const DownloadButton = ({ url, fileName, title }) => {
 
   const handleDownload = async () => {
     try {
-      const response = await axios.get(url, {
+      const response = await API.get(url, {
         responseType: "blob",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,

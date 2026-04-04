@@ -1,7 +1,9 @@
 
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import NotesForm from "../../../components/NotesForm.jsx";
+import API from "../../api/api"; 
+
 
 const PatientNotes = ({ userId }) => {
   const [notes, setNotes] = useState([]);
@@ -14,8 +16,8 @@ const PatientNotes = ({ userId }) => {
 
   const fetchNotes = async () => {
     try {
-      const res = await axios.get(
-        `${API}/api/patient-notes/by-user/${userId}`,
+      const res = await API.get(
+        `/patient-notes/by-user/${userId}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setNotes(res.data);
@@ -34,8 +36,8 @@ const PatientNotes = ({ userId }) => {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure?")) return;
     try {
-      await axios.delete(
-        `${API}/api/patient-notes/remove/${id}`,
+      await API.delete(
+        `/patient-notes/remove/${id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setNotes(notes.filter((n) => n._id !== id));
@@ -48,14 +50,14 @@ const PatientNotes = ({ userId }) => {
   const handleSave = async (formData) => {
     try {
       if (selectedNote) {
-        await axios.put(
-          `${API}/api/patient-notes/update/${selectedNote._id}`,
+        await API.put(
+          `/patient-notes/update/${selectedNote._id}`,
           formData,
           { headers: { Authorization: `Bearer ${token}` } }
         );
       } else {
-        await axios.post(
-          `${API}/api/patient-notes/create`,
+        await API.post(
+          `/patient-notes/create`,
           { ...formData, userId },
           { headers: { Authorization: `Bearer ${token}` } }
         );

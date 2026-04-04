@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import API from "../utils/api"; 
+import API from "../../api/api"; 
 
 
 const DoctorAppointmentDetails = () => {
@@ -22,7 +22,7 @@ const DoctorAppointmentDetails = () => {
   useEffect(() => {
     const fetchAll = async () => {
       try {
-        const res = await fetch(`${API}/api/appointments/doctor/appointment/${id}`, {
+        const res = await fetch(`/appointments/doctor/appointment/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
 
@@ -43,7 +43,7 @@ const DoctorAppointmentDetails = () => {
 
     const fetchPatientNotes = async () => {
       try {
-        const res = await fetch(`${API}/api/patient-notes/${id}`, {
+        const res = await fetch(`/patient-notes/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -53,7 +53,7 @@ const DoctorAppointmentDetails = () => {
 
     const fetchLabReports = async (patientMongoId) => {
       try {
-        const res = await fetch(`${API}/api/lab-report/doctor/${patientMongoId}`, {
+        const res = await fetch(`/lab-report/doctor/${patientMongoId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -73,7 +73,7 @@ const DoctorAppointmentDetails = () => {
       return alert("Add at least one note");
 
     try {
-      const res = await fetch(`${API}/api/patient-notes/${id}`, {
+      const res = await fetch(`/patient-notes/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import API from "../utils/api"; 
+
+import API from "../../api/api"; 
 
 
 const DoctorRegistration = ({ doctor, onSuccess }) => {
@@ -66,14 +66,14 @@ const DoctorRegistration = ({ doctor, onSuccess }) => {
 
       let res;
       if (doctor) {
-        res = await axios.put(
-          `${API}/api/admin/update-doctor/${doctor._id}`,
+        res = await API.put(
+          `/admin/update-doctor/${doctor._id}`,
           payload,
           { headers: { Authorization: `Bearer ${token}` } }
         );
       } else {
-        res = await axios.post(
-          `${API}/api/admin/register-doctor`,
+        res = await API.post(
+          `/admin/register-doctor`,
           payload,
           { headers: { Authorization: `Bearer ${token}` } }
         );

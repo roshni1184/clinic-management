@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
-import API from "../utils/api"; 
+
+import API from "../../api/api"; 
 
 
 const AdminSignup = () => {
@@ -29,8 +29,8 @@ const AdminSignup = () => {
     try {
       const token = localStorage.getItem("token"); // Admin token
 
-      const res = await axios.post(
-        `${API}/api/auth/adminsignup`,
+      const res = await API.post(
+        `/auth/adminsignup`,
         formData,
         {
           headers: {

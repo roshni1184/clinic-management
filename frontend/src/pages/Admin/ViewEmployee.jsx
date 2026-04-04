@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import { useParams, useNavigate } from "react-router-dom";
-import API from "../utils/api"; 
+import API from "../../api/api"; 
 
 
 const ViewEmployee = () => {
@@ -17,8 +17,8 @@ const ViewEmployee = () => {
       try {
         const token = localStorage.getItem("token");
 
-        const res = await axios.get(
-          `${API}/api/employee/${id}`,
+        const res = await API.get(
+          `/employee/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

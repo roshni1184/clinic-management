@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import axios from "axios";
+
+import API from "../../api/api" 
+
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast"; // ✅ ADD
+ 
+
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -25,9 +29,9 @@ const Signup = () => {
     setError("");
 
     try {
-      await axios.post("${API}/api/auth/signup", formData, {
-        headers: { "Content-Type": "application/json" },
-      });
+     await API.post("/auth/signup", formData, {
+  headers: { "Content-Type": "application/json" },
+});
 
       // ✅ SUCCESS POPUP
       toast.success("Signup successful 🎉");

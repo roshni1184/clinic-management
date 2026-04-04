@@ -1,5 +1,5 @@
 // import React, { useEffect, useState } from "react";
-// import axios from "axios";
+// 
 
 // const AdminLabReports = () => {
 //   const [reports, setReports] = useState([]);
@@ -28,10 +28,10 @@
 //     const fetchReports = async () => {
 //       try {
 //         const [reportsRes, statsRes] = await Promise.all([
-//           axios.get("${API}/api/lab-report/all", {
+//           API.get("/lab-report/all", {
 //             headers: { Authorization: `Bearer ${token}` },
 //           }),
-//           axios.get("${API}/api/lab-report/stats", {
+//           API.get("/lab-report/stats", {
 //             headers: { Authorization: `Bearer ${token}` },
 //           }),
 //         ]);
@@ -87,8 +87,8 @@
 //         formData.append("reportFile", newFile);
 //       }
 
-//       const res = await axios.put(
-//         `${API}/api/lab-report/${id}`,
+//       const res = await API.put(
+//         `/lab-report/${id}`,
 //         formData,
 //         {
 //           headers: {
@@ -118,8 +118,8 @@
 //       return;
 
 //     try {
-//       await axios.delete(
-//         `${API}/api/lab-report/${id}`,
+//       await API.delete(
+//         `/lab-report/${id}`,
 //         {
 //           headers: { Authorization: `Bearer ${token}` },
 //         }
@@ -340,8 +340,8 @@
 
 
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import API from "../utils/api"; 
+
+import API from "../../api/api"; 
 import Swal from "sweetalert2";
 
 const AdminLabReports = () => {
@@ -371,10 +371,10 @@ const AdminLabReports = () => {
     const fetchReports = async () => {
       try {
         const [reportsRes, statsRes] = await Promise.all([
-          axios.get("${API}/api/lab-report/all", {
+          API.get("/lab-report/all", {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get(`${API}/api/lab-report/stats`, {
+          API.get(`/lab-report/stats`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);
@@ -430,8 +430,8 @@ const AdminLabReports = () => {
         formData.append("reportFile", newFile);
       }
 
-      const res = await axios.put(
-        `${API}/api/lab-report/${id}`,
+      const res = await API.put(
+        `/lab-report/${id}`,
         formData,
         {
           headers: {
@@ -477,7 +477,7 @@ const AdminLabReports = () => {
     if (!result.isConfirmed) return;
 
     try {
-      await axios.delete(`${API}/api/lab-report/${id}`, {
+      await API.delete(`/lab-report/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

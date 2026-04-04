@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import API from "../utils/api"; 
+
+import API from "../../api/api"; 
 
 
 const UserLabReports = () => {
@@ -27,8 +27,8 @@ const UserLabReports = () => {
           return;
         }
 
-        const res = await axios.get(
-          `${API}/api/lab-report/user/${userId}`
+        const res = await API.get(
+          `/lab-report/user/${userId}`
         );
 
         if (res.data.success) {

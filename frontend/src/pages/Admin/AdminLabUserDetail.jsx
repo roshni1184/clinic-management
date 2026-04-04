@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import API from "../utils/api"; 
-import axios from "axios";
+import API from "../../api/api"; 
+
 
 const AdminLabUserDetail = () => {
   const { id } = useParams();
@@ -15,8 +15,8 @@ const AdminLabUserDetail = () => {
     const fetchLabUser = async () => {
       if (!id) return;
       try {
-        const res = await axios.get(
-          `${API}/api/admin/lab-user/${id}`,
+        const res = await API.get(
+          `/admin/lab-user/${id}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setUser(res.data.user);

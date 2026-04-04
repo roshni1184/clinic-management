@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios";
+
 import { useNavigate, useLocation, Link } from "react-router-dom";
+import API from "../../api/api";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -27,14 +28,9 @@ const Login = () => {
     setError("");
 
     try {
-      const res = await axios.post(
-        "${API}/api/auth/login",
-        formData,
-        {
-          headers: { "Content-Type": "application/json" },
-        }
-      );
-
+    const res = await API.post("/auth/login", formData, {
+  headers: { "Content-Type": "application/json" },
+});
       const { token, user } = res.data;
 
       // ✅ SAVE TOKEN + ROLE + USER

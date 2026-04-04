@@ -1,8 +1,8 @@
 // File: src/admin/AdminDashboard.jsx
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import API from "../utils/api"; 
+
+import API from "../../api/api"; 
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -30,14 +30,14 @@ const AdminDashboard = () => {
         }
 
         // Fetch Admin Info
-        const adminRes = await axios.get(`${API}/api/admin/me`, {
+        const adminRes = await API.get(`/admin/me`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setAdminName(adminRes.data.name || "Admin");
 
         // Fetch Stats
-        const statsRes = await axios.get(
-          `${API}/api/admin/stats`,
+        const statsRes = await API.get(
+          `/admin/stats`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -49,8 +49,8 @@ const AdminDashboard = () => {
         });
 
         // Fetch All Appointments
-        const apptRes = await axios.get(
-          `${API}/api/appointments/all`,
+        const apptRes = await API.geT(
+          `/appointments/all`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -119,8 +119,8 @@ const AdminDashboard = () => {
 
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(
-        `${API}/api/appointments/admin/delete/${id}`,
+      await API.delete(
+        `/appointments/admin/delete/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

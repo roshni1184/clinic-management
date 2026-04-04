@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import API from "../utils/api"; 
+import API from "../../api/api"; 
 
 const AdminAppointmentDetails = () => {
   const { id } = useParams();
@@ -13,9 +13,9 @@ const AdminAppointmentDetails = () => {
   useEffect(() => {
     const fetchAppointment = async () => {
       try {
-        const res = await fetch(`${API}/api/appointments/${id}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const res = await API.get(`/appointments/${id}`, {
+  headers: { Authorization: `Bearer ${token}` },
+});
         const data = await res.json();
         if (data.success) setAppointment(data.appointment);
         else setError(data.message || "Failed to fetch details");

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import API from "../utils/api"; 
+
+import API from "../../api/api"; 
 
 
 const EmployeeRegister = () => {
@@ -46,8 +46,8 @@ const EmployeeRegister = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await axios.post(
-        `${API}/api/employee/register`,
+      const res = await API.post(
+        `/employee/register`,
         formData,
         {
           headers: { Authorization: `Bearer ${token}` },

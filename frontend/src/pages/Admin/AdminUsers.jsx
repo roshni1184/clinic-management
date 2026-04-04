@@ -2,7 +2,7 @@
 
 
 // import React, { useEffect, useState } from "react";
-// import axios from "axios";
+// 
 // import { Link } from "react-router-dom";
 // import DownloadButton from "../../components/DownloadButton";
 
@@ -24,8 +24,8 @@
 //         localStorage.getItem("adminToken") ||
 //         localStorage.getItem("token");
 
-//       const res = await axios.get(
-//         "${API}/api/admin/users",
+//       const res = await API.get(
+//         "/admin/users",
 //         {
 //           headers: { Authorization: `Bearer ${token}` },
 //         }
@@ -64,8 +64,8 @@
 //         localStorage.getItem("adminToken") ||
 //         localStorage.getItem("token");
 
-//       const res = await axios.put(
-//         `${API}/api/admin/update-user/${userId}`,
+//       const res = await API.put(
+//         `/admin/update-user/${userId}`,
 //         editData,
 //         { headers: { Authorization: `Bearer ${token}` } }
 //       );
@@ -92,8 +92,8 @@
 //         localStorage.getItem("adminToken") ||
 //         localStorage.getItem("token");
 
-//       await axios.delete(
-//         `${API}/api/admin/delete-user/${userId}`,
+//       await API.delete(
+//         `/admin/delete-user/${userId}`,
 //         {
 //           headers: { Authorization: `Bearer ${token}` },
 //         }
@@ -140,7 +140,7 @@
 //         {/* Download Button */}
 //         <div className="shadow-lg rounded-lg">
 //           <DownloadButton
-//             url="${API}/api/admin/download-patients"
+//             url="/admin/download-patients"
 //             fileName="patients-list.csv"
 //             title="⬇ Download Patients"
 //           />
@@ -295,10 +295,10 @@
 
 
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import { Link } from "react-router-dom";
 import DownloadButton from "../../components/DownloadButton";
-import API from "../utils/api"; 
+import API from "../../api/api"; 
 
 
 const AdminUsers = () => {
@@ -323,8 +323,8 @@ const AdminUsers = () => {
         localStorage.getItem("adminToken") ||
         localStorage.getItem("token");
 
-      const res = await axios.get(
-        `${API}/api/admin/users`,
+      const res = await API.get(
+        `/admin/users`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -365,8 +365,8 @@ const AdminUsers = () => {
         localStorage.getItem("adminToken") ||
         localStorage.getItem("token");
 
-      const res = await axios.put(
-        `${API}/api/admin/update-user/${userId}`,
+      const res = await API.put(
+        `/admin/update-user/${userId}`,
         editData,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -392,8 +392,8 @@ const AdminUsers = () => {
         localStorage.getItem("adminToken") ||
         localStorage.getItem("token");
 
-      await axios.delete(
-        `${API}/api/admin/delete-user/${deleteId}`,
+      await API.delete(
+        `/admin/delete-user/${deleteId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -439,7 +439,7 @@ const AdminUsers = () => {
         </div>
 
         <DownloadButton
-          url="${API}/api/admin/download-patients"
+          url="/admin/download-patients"
           fileName="patients-list.csv"
           title="⬇ Download Patients"
         />

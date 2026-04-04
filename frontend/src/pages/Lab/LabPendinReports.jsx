@@ -1,5 +1,5 @@
 // import React, { useEffect, useState } from "react";
-// import axios from "axios";
+// 
 
 // const LabPendingReports = () => {
 //   const [reports, setReports] = useState([]);
@@ -11,7 +11,7 @@
 //   // Fetch pending reports
 //   const fetchPending = async () => {
 //     try {
-//       const res = await axios.get("${API}/api/lab-report/pending", {
+//       const res = await API.get("/lab-report/pending", {
 //         headers: { Authorization: `Bearer ${token}` },
 //       });
 //       setReports(res.data.reports || []);
@@ -31,8 +31,8 @@
 //       formData.append("status", "Completed");
 //       if (file) formData.append("reportFile", file);
 
-//       await axios.put(
-//         `${API}/api/lab-report/update/${reportId}`,
+//       await API.put(
+//         `/lab-report/update/${reportId}`,
 //         formData,
 //         {
 //           headers: {
@@ -109,8 +109,8 @@
 
 
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import API from "../utils/api"; 
+
+import API from "../../api/api"; 
 
 
 const LabPendingReports = () => {
@@ -123,8 +123,8 @@ const LabPendingReports = () => {
   // Fetch pending reports
   const fetchPending = async () => {
     try {
-      const res = await axios.get(
-        `${API}/api/lab-report/pending`,
+      const res = await API.get(
+        `/lab-report/pending`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -150,8 +150,8 @@ const LabPendingReports = () => {
         formData.append("reportFile", files[reportId]);
       }
 
-      await axios.put(
-        `${API}/api/lab-report/update/${reportId}`,
+      await API.put(
+        `/lab-report/update/${reportId}`,
         formData,
         {
           headers: {

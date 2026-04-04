@@ -1,5 +1,5 @@
 // import React, { useEffect, useState } from "react";
-// import axios from "axios";
+// 
 
 // const AllReports = () => {
 //   const [reports, setReports] = useState([]);
@@ -12,7 +12,7 @@
 //     const fetchReports = async () => {
 //       try {
 //         setLoading(true);
-//         const res = await axios.get("${API}/api/lab-report/all", {
+//         const res = await API.get("/lab-report/all", {
 //           headers: { Authorization: `Bearer ${token}` },
 //         });
 
@@ -103,8 +103,8 @@
 
 
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import API from "../utils/api"; 
+
+import API from "../../api/api"; 
 
 
 const AllReports = () => {
@@ -128,8 +128,8 @@ const AllReports = () => {
   useEffect(() => {
     const fetchReports = async () => {
       try {
-        const res = await axios.get(
-          `${API}/api/lab-report/all`,
+        const res = await API.get(
+          `/lab-report/all`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -177,8 +177,8 @@ const AllReports = () => {
         formData.append("reportFile", newFile);
       }
 
-      const res = await axios.put(
-        `${API}/api/lab-report/${id}`,
+      const res = await API.put(
+        `/lab-report/${id}`,
         formData,
         {
           headers: {
@@ -206,8 +206,8 @@ const AllReports = () => {
       return;
 
     try {
-      await axios.delete(
-        `${API}/api/lab-report/${id}`,
+      await API.delete(
+        `/lab-report/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

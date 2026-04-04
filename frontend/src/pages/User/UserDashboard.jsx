@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import API from "../utils/api"; 
+
+import API from "../../api/api"; 
 
 
 const UserDashboard = () => {
@@ -29,7 +29,7 @@ const UserDashboard = () => {
         return;
       }
 
-      const res = await axios.get(`${API}/api/user/me`, {
+      const res = await API.get(`/user/me`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -52,7 +52,7 @@ const UserDashboard = () => {
         return;
       }
 
-      const res = await axios.get(`${API}/api/appointments/me`, {
+      const res = await API.get(`/appointments/me`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

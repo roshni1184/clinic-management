@@ -1,6 +1,6 @@
 
 // import React, { useState, useEffect } from "react";
-// import axios from "axios";
+// 
 // import Slider from "react-slick";
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
@@ -37,7 +37,7 @@
 //   /* ⭐ Fetch Testimonials */
 //   const fetchTestimonials = async () => {
 //     try {
-//       const res = await axios.get("${API}/api/testimonials");
+//       const res = await API.get("/testimonials");
 //       setTestimonials(res.data);
 //     } catch (error) {
 //       console.log("Error fetching testimonials");
@@ -254,7 +254,7 @@
 
 
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+
 import Slider from "react-slick";
 import { motion } from "framer-motion";
 
@@ -263,7 +263,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import contactimg from "../images/contactimg.png";
 import Certificationsimg from "../images/Certificationsimg.png";
-import API from "../utils/api"; 
+import API from "../api/api"; 
 
 const Contact = () => {
 
@@ -286,7 +286,7 @@ const Contact = () => {
 
   const fetchTestimonials = async () => {
     try {
-      const res = await axios.get(`${API}/api/testimonials`);
+      const res = await API.get(`/testimonials`);
       setTestimonials(res.data);
     } catch (error) {
       console.log("Error fetching testimonials");

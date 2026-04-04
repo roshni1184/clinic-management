@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import axios from "axios";
-import API from "../utils/api"; 
+
+import API from "../../api/api"; 
 
 const AdminDoctorDetails = () => {
   const { id } = useParams();
@@ -12,7 +12,7 @@ const AdminDoctorDetails = () => {
   const fetchDoctorDetails = async () => {
     try {
       const token = localStorage.getItem("token") || localStorage.getItem("adminToken");
-      const res = await axios.get(`${API}/api/admin/doctor/${id}`, {
+      const res = await API.get(`/admin/doctor/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setDoctor(res.data.doctor);
