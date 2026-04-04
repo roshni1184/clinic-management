@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import API from "../utils/api";
+import API from "../../utils/api";
 
 const AdminAppointment = () => {
   const [groupedAppointments, setGroupedAppointments] = useState({});
@@ -21,7 +21,7 @@ const AdminAppointment = () => {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "${API}/api/appointments/all",
+        `${API}/api/appointments/all`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

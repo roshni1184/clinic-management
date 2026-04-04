@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import API from "../../utils/api";
+
+
 
 const DoctorAppointments = () => {
   const [appointments, setAppointments] = useState([]);
@@ -31,7 +34,7 @@ const DoctorAppointments = () => {
         }
 
         const res = await axios.get(
-          "${API}/api/appointments/doctor/appointments",
+          `${API}/api/appointments/doctor/appointments`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
 

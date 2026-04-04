@@ -87,6 +87,8 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API from "../../utils/api";
+
 
 const LabDashboard = () => {
   const [stats, setStats] = useState([
@@ -111,7 +113,7 @@ const LabDashboard = () => {
   const fetchReports = async () => {
     try {
       const res = await axios.get(
-        "${API}/api/lab-report/all",
+        `${API}/api/lab-report/all`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

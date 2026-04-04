@@ -263,6 +263,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import contactimg from "../images/contactimg.png";
 import Certificationsimg from "../images/Certificationsimg.png";
+import API from "../../utils/api";
 
 const Contact = () => {
 
@@ -285,7 +286,7 @@ const Contact = () => {
 
   const fetchTestimonials = async () => {
     try {
-      const res = await axios.get("${API}/api/testimonials");
+      const res = await axios.get(`${API}/api/testimonials`);
       setTestimonials(res.data);
     } catch (error) {
       console.log("Error fetching testimonials");

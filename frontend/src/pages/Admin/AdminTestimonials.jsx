@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API from "../../utils/api";
+
 
 const AdminTestimonials = () => {
   const [testimonials, setTestimonials] = useState([]);
@@ -16,7 +18,7 @@ const AdminTestimonials = () => {
       setLoading(true);   
 
       const res = await axios.get(
-        "${API}/api/testimonials/all",
+        `${API}/api/testimonials/all`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

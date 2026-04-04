@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import API from "../utils/api";
+import API from "../../utils/api";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -30,14 +30,14 @@ const AdminDashboard = () => {
         }
 
         // Fetch Admin Info
-        const adminRes = await axios.get("${API}/api/admin/me", {
+        const adminRes = await axios.get(`${API}/api/admin/me`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setAdminName(adminRes.data.name || "Admin");
 
         // Fetch Stats
         const statsRes = await axios.get(
-          "${API}/api/admin/stats",
+          `${API}/api/admin/stats`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -50,7 +50,7 @@ const AdminDashboard = () => {
 
         // Fetch All Appointments
         const apptRes = await axios.get(
-          "${API}/api/appointments/all",
+          `${API}/api/appointments/all`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

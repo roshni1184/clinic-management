@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import API from "../../utils/api";
 
 const TestimonialForm = ({ onClose, onSuccess }) => {
   const [form, setForm] = useState({
@@ -32,7 +33,7 @@ const TestimonialForm = ({ onClose, onSuccess }) => {
       setLoading(true);
 
       await axios.post(
-        "${API}/api/testimonials",
+        `${API}/api/testimonials`,
         form
       );
 

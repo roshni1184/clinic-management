@@ -216,6 +216,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API from "../../utils/api";
 import { useNavigate } from "react-router-dom";
 import DownloadButton from "../../components/DownloadButton";
 import Swal from "sweetalert2";
@@ -234,7 +235,7 @@ const AdminLabUsers = () => {
   const fetchLabUsers = async () => {
     try {
       const res = await axios.get(
-        "${API}/api/admin/lab-users",
+        `${API}/api/admin/lab-users`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

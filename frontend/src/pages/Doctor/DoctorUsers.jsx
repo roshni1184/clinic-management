@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import API from "../../utils/api";
+
 
 const DoctorUsers = () => {
   const [users, setUsers] = useState([]);
@@ -17,7 +19,7 @@ const DoctorUsers = () => {
         return;
       }
 
-      const res = await axios.get("${API}/api/doctors/users", {
+      const res = await axios.get(`${API}/api/doctors/users`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

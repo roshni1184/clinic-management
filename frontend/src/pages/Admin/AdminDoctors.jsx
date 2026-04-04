@@ -242,6 +242,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API from "../../utils/api";
 import { Link } from "react-router-dom";
 import DoctorRegistration from "./DoctorRegistration";
 import DownloadButton from "../../components/DownloadButton";
@@ -262,7 +263,7 @@ const AdminDoctors = () => {
         localStorage.getItem("adminToken");
 
       const res = await axios.get(
-        "${API}/api/admin/doctors",
+        `${API}/api/admin/doctors`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -348,7 +349,7 @@ const AdminDoctors = () => {
         </button>
 
         <DownloadButton
-          url="${API}/api/admin/download-doctors"
+          url={`${API}/api/admin/download-doctors`} 
           fileName="doctors-list.csv"
           title="⬇ Download Doctors"
         />

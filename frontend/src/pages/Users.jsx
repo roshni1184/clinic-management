@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API from "../../utils/api";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get("${API}/api/admin/users", {
+    axios.get(`${API}/api/admin/users`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },

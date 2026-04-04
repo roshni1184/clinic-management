@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API from "../../utils/api";
+
 
 const DoctorRegistration = ({ doctor, onSuccess }) => {
   const [formData, setFormData] = useState({
@@ -71,7 +73,7 @@ const DoctorRegistration = ({ doctor, onSuccess }) => {
         );
       } else {
         res = await axios.post(
-          "${API}/api/admin/register-doctor",
+          `${API}/api/admin/register-doctor`,
           payload,
           { headers: { Authorization: `Bearer ${token}` } }
         );

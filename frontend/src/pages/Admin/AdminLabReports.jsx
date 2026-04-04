@@ -341,6 +341,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API from "../../utils/api";
 import Swal from "sweetalert2";
 
 const AdminLabReports = () => {
@@ -373,7 +374,7 @@ const AdminLabReports = () => {
           axios.get("${API}/api/lab-report/all", {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get("${API}/api/lab-report/stats", {
+          axios.get(`${API}/api/lab-report/stats`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);

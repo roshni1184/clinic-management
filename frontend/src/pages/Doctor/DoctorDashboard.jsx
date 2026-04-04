@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API from "../../utils/api";
+
 
 const DoctorDashboard = () => {
   const [doctorName, setDoctorName] = useState("");
@@ -41,7 +43,7 @@ const DoctorDashboard = () => {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "${API}/api/appointments/doctor/appointments",
+        `${API}/api/appointments/doctor/appointments`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
 

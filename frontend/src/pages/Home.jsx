@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import API from "../utils/api";  
+import API from "../../utils/api"; 
 import TestimonialForm from "../components/TestimonialForm";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";

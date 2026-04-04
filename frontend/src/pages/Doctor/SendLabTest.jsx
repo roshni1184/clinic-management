@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import API from "../../utils/api";
+
 
 const SendLabTest = () => {
   const { id } = useParams(); // appointment id
@@ -28,7 +30,7 @@ const SendLabTest = () => {
   const handleSend = async () => {
     if (!reportType) return alert("Select report type");
 
-    const res = await fetch("${API}/api/lab-report/create", {
+    const res = await fetch(`${API}/api/lab-report/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

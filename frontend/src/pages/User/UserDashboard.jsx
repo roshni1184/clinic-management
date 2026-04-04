@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API from "../../utils/api";
+
 
 const UserDashboard = () => {
   const [userName, setUserName] = useState("");
@@ -27,7 +29,7 @@ const UserDashboard = () => {
         return;
       }
 
-      const res = await axios.get("${API}/api/user/me", {
+      const res = await axios.get(`${API}/api/user/me`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -50,7 +52,7 @@ const UserDashboard = () => {
         return;
       }
 
-      const res = await axios.get("${API}/api/appointments/me", {
+      const res = await axios.get(`${API}/api/appointments/me`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

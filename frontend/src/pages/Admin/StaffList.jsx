@@ -174,6 +174,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import API from "../../utils/api";
+
 
 const StaffList = () => {
 
@@ -194,7 +196,7 @@ const StaffList = () => {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "${API}/api/employee",
+        `${API}/api/employee`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

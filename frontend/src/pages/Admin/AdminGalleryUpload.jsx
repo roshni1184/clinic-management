@@ -223,6 +223,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import API from "../../utils/api";
 
 const AdminGalleryUploads = () => {
   const [gallery, setGallery] = useState([]);
@@ -234,7 +235,7 @@ const AdminGalleryUploads = () => {
   const [deleteId, setDeleteId] = useState(null);
 
   const fetchGallery = async () => {
-    const res = await axios.get("${API}/api/gallery");
+    const res = await axios.get(`${API}/api/gallery`);
     setGallery(res.data);
   };
 
@@ -261,7 +262,7 @@ const AdminGalleryUploads = () => {
       } else {
         if (!selectedFile) return;
         await axios.post(
-          "${API}/api/gallery/upload",
+          `${API}/api/gallery/upload`,
           formData
         );
       }

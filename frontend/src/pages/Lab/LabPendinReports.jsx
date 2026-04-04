@@ -110,6 +110,8 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API from "../../utils/api";
+
 
 const LabPendingReports = () => {
   const [reports, setReports] = useState([]);
@@ -122,7 +124,7 @@ const LabPendingReports = () => {
   const fetchPending = async () => {
     try {
       const res = await axios.get(
-        "${API}/api/lab-report/pending",
+        `${API}/api/lab-report/pending`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

@@ -298,6 +298,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import DownloadButton from "../../components/DownloadButton";
+import API from "../../utils/api";
+
 
 const AdminUsers = () => {
 
@@ -322,7 +324,7 @@ const AdminUsers = () => {
         localStorage.getItem("token");
 
       const res = await axios.get(
-        "${API}/api/admin/users",
+        `${API}/api/admin/users`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

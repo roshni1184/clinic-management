@@ -10,6 +10,7 @@ import clinic2 from "../images/clinic2.png";
 import clinic3 from "../images/clinic3.png";
 import logo from "../images/navbarimage.png";
 
+
 const About = () => {
   useEffect(() => {
     AOS.init({ duration: 1200, once: true });

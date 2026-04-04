@@ -685,7 +685,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import API from "../utils/api";
+import API from "../../utils/api";
 
 const AdminBlog = () => {
 
@@ -706,7 +706,7 @@ const AdminBlog = () => {
 
   const fetchBlogs = async () => {
     try {
-      const res = await axios.get("${API}/api/admin/blogs");
+      const res = await axios.get(`${API}/api/admin/blogs`);
       setBlogs(res.data);
     } catch (err) {
       console.error("Failed to fetch blogs:", err);

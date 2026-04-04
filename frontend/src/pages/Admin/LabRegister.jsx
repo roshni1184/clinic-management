@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import API from "../../utils/api";
+
 
 const LabRegister = () => {
   const [form, setForm] = useState({
@@ -20,7 +22,7 @@ const LabRegister = () => {
       const token = localStorage.getItem("token");
 
       const res = await axios.post(
-        "${API}/api/admin/register-lab",
+        `${API}/api/admin/register-lab`,
         form,
         { headers: { Authorization: `Bearer ${token}` } }
       );
