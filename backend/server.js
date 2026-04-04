@@ -121,7 +121,7 @@ const __dirname = path.dirname(__filename);
 // middleware
 app.use(
   cors({
-    origin: "*",
+    origin: "https://clinic-management-rosy-rho.vercel.app",
     credentials: true,
   })
 );
