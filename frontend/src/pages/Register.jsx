@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import API from "../api/api"; 
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -19,13 +18,17 @@ export default function Register() {
     e.preventDefault();
 
     try {
-      const res = await fetch(`/auth/register`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      const res = await fetch(
+  `${import.meta.env.VITE_API_URL}/api/auth/register`,
+  {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData),
+  }
+);
 
-      const data = await res.json();
+const data = await res.json();
+     
 
       if (res.ok) {
         localStorage.setItem("token", data.token); // Save token

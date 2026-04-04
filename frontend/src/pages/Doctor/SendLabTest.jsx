@@ -15,7 +15,7 @@ const SendLabTest = () => {
   useEffect(() => {
     const fetchAppointment = async () => {
       const res = await fetch(
-        `/appointments/doctor/appointment/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/appointments/doctor/appointment/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -30,7 +30,7 @@ const SendLabTest = () => {
   const handleSend = async () => {
     if (!reportType) return alert("Select report type");
 
-    const res = await fetch(`/lab-report/create`, {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/lab-report/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

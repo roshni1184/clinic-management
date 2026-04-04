@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 
-import API from "../utils/api"
+import API from "../api/api"
 import { Link } from "react-router-dom";
 
 import galleryBg from "../images/gallerybg1.png";

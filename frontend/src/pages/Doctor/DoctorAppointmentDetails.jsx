@@ -20,11 +20,19 @@ const DoctorAppointmentDetails = () => {
   const [currentReportFile, setCurrentReportFile] = useState("");
 
   useEffect(() => {
-    const fetchAll = async () => {
-      try {
-        const res = await fetch(`/appointments/doctor/appointment/${id}`, {
-          headers: { Authorization: `Bearer ${token}` }
-        });
+  const fetchAll = async () => {
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/appointments/doctor/appointment/${id}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
 
         const data = await res.json();
         if (data.success) {
@@ -43,7 +51,7 @@ const DoctorAppointmentDetails = () => {
 
     const fetchPatientNotes = async () => {
       try {
-        const res = await fetch(`/patient-notes/${id}`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/patient-notes/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -53,7 +61,7 @@ const DoctorAppointmentDetails = () => {
 
     const fetchLabReports = async (patientMongoId) => {
       try {
-        const res = await fetch(`/lab-report/doctor/${patientMongoId}`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/lab-report/doctor/${patientMongoId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -73,7 +81,7 @@ const DoctorAppointmentDetails = () => {
       return alert("Add at least one note");
 
     try {
-      const res = await fetch(`/patient-notes/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/patient-notes/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({
