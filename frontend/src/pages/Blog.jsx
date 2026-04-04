@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 
 import blogimg1 from "../images/blogimg1.png";
-import API from "../api/api";  
+import API from "../api/api"; 
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
