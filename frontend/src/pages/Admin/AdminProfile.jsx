@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
-import API from "../../utils/api";
+import API from "../utils/api"; 
 
 const AdminProfile = () => {
   const [admin, setAdmin] = useState({

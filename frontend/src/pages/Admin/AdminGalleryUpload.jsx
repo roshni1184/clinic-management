@@ -223,7 +223,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import API from "../../utils/api";
+import API from "../utils/api"; 
 
 const AdminGalleryUploads = () => {
   const [gallery, setGallery] = useState([]);

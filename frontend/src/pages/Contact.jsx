@@ -263,7 +263,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import contactimg from "../images/contactimg.png";
 import Certificationsimg from "../images/Certificationsimg.png";
-import API from "../../utils/api";
+import API from "../utils/api"; 
 
 const Contact = () => {
 

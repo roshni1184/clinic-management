@@ -341,7 +341,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import API from "../../utils/api";
+import API from "../utils/api"; 
 import Swal from "sweetalert2";
 
 const AdminLabReports = () => {

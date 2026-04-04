@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import blogimg1 from "../images/blogimg1.png";
-import API from "../../utils/api"; 
+import API from "../utils/api";  
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);

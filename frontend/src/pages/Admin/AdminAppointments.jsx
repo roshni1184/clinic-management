@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import API from "../../utils/api";
+import API from "../utils/api"; 
 
 const AdminAppointment = () => {
   const [groupedAppointments, setGroupedAppointments] = useState({});

@@ -242,7 +242,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import API from "../../utils/api";
+import API from "../utils/api"; 
 import { Link } from "react-router-dom";
 import DoctorRegistration from "./DoctorRegistration";
 import DownloadButton from "../../components/DownloadButton";

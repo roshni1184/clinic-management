@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import API from "../../utils/api";
+import API from "../utils/api"; 
 
 export default function AdminLogin({ setAuth }) {
   const [formData, setFormData] = useState({ email: "", password: "" });
