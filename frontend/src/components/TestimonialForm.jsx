@@ -31,7 +31,7 @@ const TestimonialForm = ({ onClose, onSuccess }) => {
 
     try {
       setLoading(true);
-
+      console.log("API call start");
       await API.post(
         `/testimonials`,
         form
