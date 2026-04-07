@@ -334,7 +334,7 @@ const AdminGalleryUploads = () => {
               <tr key={item._id} className="border-b border-gray-700">
                 <td className="py-3 px-4">
                   <img
-                    src={`${API}/uploads/gallery/${item.image}`}
+                   src={`${import.meta.env.VITE_API_URL}/uploads/gallery/${item.image}`}
                     alt="gallery"
                     className="w-32 h-20 object-cover rounded"
                   />
