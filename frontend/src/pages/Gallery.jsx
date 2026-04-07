@@ -12,7 +12,7 @@ const Gallery = () => {
 
   const fetchGallery = async () => {
     try {
-     const res = await API.get(`/gallery`);
+      const res = await API.get(`/gallery`);
       setGalleryItems(res.data);
     } catch (error) {
       console.error("Error fetching gallery", error);
@@ -52,7 +52,7 @@ const Gallery = () => {
               className="bg-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition duration-300"
             >
               <img
-                src={`${API}/uploads/gallery/${item.image}`}
+                src={`${import.meta.env.VITE_API_URL}/uploads/gallery/${item.image}`}
                 alt="Gallery"
                 className="w-full h-80 object-cover"
               />

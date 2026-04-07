@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 
 import blogimg1 from "../images/blogimg1.png";
-import API from "../api/api"; 
+import API from "../api/api";
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -63,7 +63,7 @@ const Blog = () => {
                 <img
                   src={
                     blog.image
-                      ? `${API}/${blog.image}`
+                      ? `${import.meta.env.VITE_API_URL}/${blog.image}`
                       : blogimg1
                   }
                   alt={blog.title}
