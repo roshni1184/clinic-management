@@ -998,7 +998,7 @@ const AdminBlog = () => {
                   {/* ✅ FIXED IMAGE PATH */}
                   {blog.image ? (
                     <img
-                      src={`${API}/${blog.image}`}
+                     src={`${import.meta.env.VITE_API_URL}/${blog.image}`}
                       alt=""
                       className="w-24 h-16 object-cover"
                     />
