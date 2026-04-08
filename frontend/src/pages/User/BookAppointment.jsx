@@ -193,7 +193,7 @@ export default function BookAppointment() {
         handler: async function (response) {
           try {
             const verifyRes = await API.post(
-              `/payment/verify-appointment-payment`,
+              `/payment/verify-payment`,
               {
                 appointmentId: appointment._id,
                 razorpay_order_id: response.razorpay_order_id,
