@@ -52,7 +52,13 @@ const Gallery = () => {
               className="bg-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition duration-300"
             >
               <img
-                src={`${import.meta.env.VITE_API_URL}/uploads/gallery/${item.image}`}
+                src={
+                  item.image
+                    ? item.image.includes("gallery")
+                      ? `${import.meta.env.VITE_API_URL}/uploads/${item.image}`
+                      : `${import.meta.env.VITE_API_URL}/uploads/gallery/${item.image}`
+                    : "https://via.placeholder.com/400x300"
+                }
                 alt="Gallery"
                 className="w-full h-80 object-cover"
               />

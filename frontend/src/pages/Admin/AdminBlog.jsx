@@ -997,15 +997,11 @@ const AdminBlog = () => {
 
                   {/* ✅ FIXED IMAGE PATH */}
                   {blog.image ? (
-                    <img
-<<<<<<< HEAD
-                     src={`${import.meta.env.VITE_API_URL}/${blog.image}`}
-=======
-                       src={`${import.meta.env.VITE_API_URL}/${blog.image}`}
->>>>>>> 06f9098 (image fixed)
-                      alt=""
-                      className="w-24 h-16 object-cover"
-                    />
+                   <img
+  src={`${import.meta.env.VITE_API_URL}/uploads/${blog.image}`}
+  alt="blog"
+  className="w-24 h-16 object-cover"
+/>
                   ) : "N/A"}
 
                 </td>
