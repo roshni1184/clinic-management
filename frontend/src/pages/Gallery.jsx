@@ -52,9 +52,11 @@ const Gallery = () => {
               className="bg-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition duration-300"
             >
               <img
-                src={`${import.meta.env.VITE_API_URL}/uploads/gallery/${item.image}`}
-                alt="Gallery"
-                className="w-full h-80 object-cover"
+                src={
+                  item.image
+                    ? `${import.meta.env.VITE_API_URL}/uploads/gallery/${item.image}`
+                    : "fallback-image-url"
+                }
               />
 
               <div className="p-5 text-center">
