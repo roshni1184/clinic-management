@@ -184,7 +184,7 @@ export default function BookAppointment() {
 
       // ✅ Step 3: Open Razorpay Payment Window
       const options = {
-        key,
+        key: import.meta.env.VITE_RAZORPAY_KEY_ID,
         amount: order.amount,
         currency: "INR",
         name: "Doctor Appointment",
