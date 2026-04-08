@@ -63,9 +63,7 @@ const Blog = () => {
                 <img
                   src={
                     blog.image
-                      ? blog.image.includes("uploads")
-                        ? `${import.meta.env.VITE_API_URL}/${blog.image}`
-                        : `${import.meta.env.VITE_API_URL}/uploads/${blog.image}`
+                      ? `${import.meta.env.VITE_API_URL}/${blog.image}`
                       : blogimg1
                   }
                   alt={blog.title}
