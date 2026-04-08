@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom"; // ✅ ADDED
-import API from "../../api/api"; 
+import API from "../../api/api";
 
 
 export default function BookAppointment() {
@@ -163,7 +163,10 @@ export default function BookAppointment() {
       // ✅ Step 2: Create Razorpay Order
       const orderRes = await API.post(
         `/payment/create-order`,
-        { amount: fee },
+        {
+          amount: fee,
+          appointmentId: appointment._id   // ✅ YAHI ADD KARNA HAI
+        },
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
@@ -424,193 +427,4 @@ export default function BookAppointment() {
   );
 }
 
-
-
-// import React, { useState, useEffect } from "react";
-// 
-// import Swal from "sweetalert2";
-
-// export default function BookAppointment() {
-//   const [doctors, setDoctors] = useState([]);
-//   const [selectedDoctor, setSelectedDoctor] = useState("");
-//   const [selectedService, setSelectedService] = useState("");
-//   const [fee, setFee] = useState("");
-//   const [date, setDate] = useState("");
-//   const [hour, setHour] = useState("");
-//   const [minute, setMinute] = useState("");
-//   const [ampm, setAmpm] = useState("AM");
-//   const [reason, setReason] = useState("");
-
-//   // Patient details
-//   const [patientName, setPatientName] = useState("");
-//   const [patientEmail, setPatientEmail] = useState("");
-//   const [patientPhone, setPatientPhone] = useState("");
-
-//   // Fetch doctors
-//   useEffect(() => {
-//     const fetchDoctors = async () => {
-//       try {
-//         const res = await API.get("/doctors");
-//         setDoctors(res.data.doctors || []);
-//       } catch (err) {
-//         console.error("Error fetching doctors:", err);
-//       }
-//     };
-//     fetchDoctors();
-//   }, []);
-
-//   const services = [
-//     "Treatment of Loose Teeth",
-//     "Root Canal Therapy (RCT)",
-//     "Tooth Extraction",
-//     "Impacted Tooth Removal",
-//     "Artificial Teeth (Dentures)",
-//     "Teeth Alignment",
-//     "Ultrasonic Teeth Cleaning",
-//     "Laser Tooth Fillings",
-//     "Child Dental Treatment",
-//     "Dental Bleaching",
-//     "Dental X-Ray",
-//     "Chest X-Ray",
-//     "Skull X-Ray",
-//     "Abdominal X-Ray",
-//     "Abdominal Ultrasound",
-//     "Pelvic Ultrasound",
-//     "Pregnancy Ultrasound",
-//     "Cardiac Ultrasound (Echo)",
-//     "Thyroid Ultrasound",
-//     "3D/4D Baby Ultrasound",
-//   ];
-
-//   // Fee logic
-//   const handleServiceChange = (e) => {
-//     const service = e.target.value;
-//     setSelectedService(service);
-//     if (service.toLowerCase().includes("x-ray")) setFee("800");
-//     else if (service.toLowerCase().includes("ultrasound")) setFee("1000");
-//     else setFee("500");
-//   };
-
-//   // Razorpay Checkout
-//   const handlePayment = async (appointmentId, amount) => {
-//   try {
-//     const res = await API.post(
-//       "/appointments/create-order",
-//       { amount },
-//       { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
-//     );
-
-//     const { order } = res.data;
-
-//     const options = {
-//       key: import.meta.env.VITE_RAZORPAY_KEY_ID,
-//       amount: order.amount,
-//       currency: order.currency,
-//       name: "Dental Clinic",
-//       description: "Appointment Payment",
-//       order_id: order.id,
-//       handler: async function (response) {
-//         await API.post(
-//           "/appointments/verify-payment",
-//           {
-//             appointmentId, // pass the booked appointment id
-//             razorpay_order_id: response.razorpay_order_id,
-//             razorpay_payment_id: response.razorpay_payment_id,
-//             razorpay_signature: response.razorpay_signature,
-//           },
-//           { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
-//         );
-//         Swal.fire("Payment Successful", "Appointment booked & confirmed!", "success");
-//       },
-//       prefill: {
-//         name: patientName,
-//         email: patientEmail,
-//         contact: patientPhone,
-//       },
-//       theme: { color: "#2FC1FF" },
-//     };
-
-//     const rzp = new window.Razorpay(options);
-//     rzp.open();
-//   } catch (err) {
-//     console.error(err);
-//     Swal.fire("Error", "Failed to initiate payment", "error");
-//   }
-// };
-
-
-//   // Form submit
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     const formattedTime = `${hour}:${minute} ${ampm}`;
-
-//     try {
-//       const token = localStorage.getItem("token");
-//       if (!token) {
-//         Swal.fire("Login Required", "Please login to book appointment", "warning");
-//         return;
-//       }
-
-//       if (
-//         !selectedDoctor ||
-//         !selectedService ||
-//         !date ||
-//         !hour ||
-//         !minute ||
-//         !patientName ||
-//         !patientEmail ||
-//         !patientPhone
-//       ) {
-//         Swal.fire("Missing Fields", "Please fill all required fields", "warning");
-//         return;
-//       }
-
-//       // 1️⃣ Book appointment (status pending)
-//       const res = await API.post(
-//         "/appointments",
-//         {
-//           doctor: selectedDoctor,
-//           service: selectedService,
-//           fee,
-//           date,
-//           time: formattedTime,
-//           reason,
-//           patientName,
-//           patientEmail,
-//           patientPhone,
-//         },
-//         { headers: { Authorization: `Bearer ${token}` } }
-//       );
-
-//       if (res.data.success) {
-//         // 2️⃣ Trigger Razorpay payment
-//         handlePayment(res.data.appointment._id, fee);
-//       }
-//     } catch (err) {
-//       console.error(err);
-//       Swal.fire("Error", "Failed to book appointment", "error");
-//     }
-//   };
-
-//   return (
-//     <div className="max-w-2xl mx-auto p-6 lg:p-12">
-//       <h1 className="text-3xl font-bold text-center text-[#2FC1FF] mb-8">
-//         Book Appointment
-//       </h1>
-
-//       <form onSubmit={handleSubmit} className="bg-white p-6 rounded-2xl shadow-lg space-y-6">
-//         {/* Patient & Appointment Fields (same as your previous code) */}
-//         {/* ... add all the input fields here as you already have ... */}
-//         <div className="text-center">
-//           <button
-//             type="submit"
-//             className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-8 py-3 rounded-full font-semibold shadow hover:opacity-95 transition"
-//           >
-//             Book Appointment & Pay
-//           </button>
-//         </div>
-//       </form>
-//     </div>
-//   );
-// }
 
