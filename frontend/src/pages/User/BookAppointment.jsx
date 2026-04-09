@@ -164,12 +164,11 @@ export default function BookAppointment() {
       const orderRes = await API.post(
         `/payment/create-order`,
         {
-          amount: fee,
-          appointmentId: appointment._id   // ✅ YAHI ADD KARNA HAI
+          amount: Number(fee),   // 🔥 FIX
+          appointmentId: appointment._id
         },
         { headers: { Authorization: `Bearer ${token}` } }
       );
-
       const { order } = orderRes.data;
       const key = import.meta.env.VITE_RAZORPAY_KEY_ID;
 
