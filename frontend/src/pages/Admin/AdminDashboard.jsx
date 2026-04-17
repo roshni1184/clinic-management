@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 import API from "../../api/api"; 
 
 const AdminDashboard = () => {
-  const navigate = useNavigate();
-  const [adminName, setAdminName] = useState("");
+  const navigate = useNavigate(); 
+  const [adminName, setAdminName] = useState(""); 
   const [stats, setStats] = useState({
     totalDoctors: 0,
     totalUsers: 0,

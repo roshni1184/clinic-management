@@ -340,7 +340,7 @@ const AdminGalleryUploads = () => {
                   />
                 </td>
 
-                <td className="py-3 px-4 text-gray-300">
+                <td className="py-3 px-4 text-gray-300">  
                   {item.description}
                 </td>
 

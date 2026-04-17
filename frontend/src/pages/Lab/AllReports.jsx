@@ -104,7 +104,7 @@
 
 import React, { useEffect, useState } from "react";
 
-import API from "../../api/api"; 
+import API from "../../api/api";
 
 
 const AllReports = () => {
@@ -183,7 +183,6 @@ const AllReports = () => {
         {
           headers: {
             Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data",
           },
         }
       );
@@ -336,7 +335,7 @@ const AllReports = () => {
                       <button
                         onClick={() =>
                           setPreviewFile(
-                            `${API}${r.reportFile}`
+                            `${import.meta.env.VITE_API_URL}${r.reportFile}`
                           )
                         }
                         className="text-red-500 hover:underline"

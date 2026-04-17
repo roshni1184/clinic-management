@@ -209,7 +209,29 @@ const LabPendingReports = () => {
                 <span className="font-semibold">Doctor:</span>{" "}
                 {r.doctorId?.name}
               </p>
+                 
+                 {r.reportFile && (
+  <div className="mt-3">
+    <p className="text-sm text-gray-400">Uploaded File:</p>
 
+    {r.reportFile.endsWith(".pdf") ? (
+      <a
+        href={`${import.meta.env.VITE_API_URL}${r.reportFile}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-400 underline"
+      >
+        View PDF
+      </a>
+    ) : (
+      <img
+        src={`${import.meta.env.VITE_API_URL}${r.reportFile}`}
+        alt="Report"
+        className="mt-2 w-40 h-40 object-cover rounded"
+      />
+    )}
+  </div>
+)}
               {/* ✅ TEXTAREA FIXED */}
               <textarea
                 placeholder="Lab Result / Remark"

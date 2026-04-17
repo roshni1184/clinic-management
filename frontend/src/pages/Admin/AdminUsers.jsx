@@ -125,7 +125,7 @@
 
 //   return (
 //     <div className="p-6 max-w-6xl mx-auto">
-      
+
 //       {/* Header Section */}
 //       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
 //         <div>
@@ -298,7 +298,7 @@ import React, { useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
 import DownloadButton from "../../components/DownloadButton";
-import API from "../../api/api"; 
+import API from "../../api/api";
 
 
 const AdminUsers = () => {
@@ -485,7 +485,7 @@ const AdminUsers = () => {
                       onChange={(e) =>
                         setEditData({ ...editData, name: e.target.value })
                       }
-                      className="text-black px-2 py-1 rounded"
+                      className="text-white px-2 py-1 rounded"
                     />
                   ) : user.name}
                 </td>
@@ -497,7 +497,7 @@ const AdminUsers = () => {
                       onChange={(e) =>
                         setEditData({ ...editData, email: e.target.value })
                       }
-                      className="text-black px-2 py-1 rounded"
+                      className="text-white px-2 py-1 rounded"
                     />
                   ) : user.email}
                 </td>
@@ -509,36 +509,55 @@ const AdminUsers = () => {
                       onChange={(e) =>
                         setEditData({ ...editData, phone: e.target.value })
                       }
-                      className="text-black px-2 py-1 rounded"
+                      className="text-white px-2 py-1 rounded"
                     />
                   ) : user.phone}
                 </td>
 
                 <td className="text-center">
 
-                  <Link
-                    to={`/admin/user/${user._id}`}
-                    className="bg-blue-600 px-3 py-1 rounded mr-2"
-                  >
-                    View
-                  </Link>
+                  {editingUser === user._id ? (
+                    <>
+                      <button
+                        onClick={() => handleSave(user._id)}
+                        className="bg-green-600 px-3 py-1 rounded mr-2"
+                      >
+                        Save
+                      </button>
 
-                  <button
-                    onClick={() => handleEditClick(user)}
-                    className="bg-yellow-500 px-3 py-1 rounded mr-2"
-                  >
-                    Edit
-                  </button>
+                      <button
+                        onClick={handleCancel}
+                        className="bg-gray-500 px-3 py-1 rounded"
+                      >
+                        Cancel
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <Link
+                        to={`/admin/user/${user._id}`}
+                        className="bg-blue-600 px-3 py-1 rounded mr-2"
+                      >
+                        View
+                      </Link>
 
-                  <button
-                    onClick={() => setDeleteId(user._id)}
-                    className="bg-red-600 px-3 py-1 rounded"
-                  >
-                    Delete
-                  </button>
+                      <button
+                        onClick={() => handleEditClick(user)}
+                        className="bg-yellow-500 px-3 py-1 rounded mr-2"
+                      >
+                        Edit
+                      </button>
+
+                      <button
+                        onClick={() => setDeleteId(user._id)}
+                        className="bg-red-600 px-3 py-1 rounded"
+                      >
+                        Delete
+                      </button>
+                    </>
+                  )}
 
                 </td>
-
               </tr>
 
             ))}

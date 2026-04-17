@@ -116,7 +116,7 @@ const AdminUserDetails = () => {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table> 
         </div>
       ) : (
         <p className="text-gray-400 text-lg">No appointments found.</p>
