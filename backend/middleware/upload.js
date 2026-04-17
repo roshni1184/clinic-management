@@ -50,7 +50,7 @@ const storage = multer.diskStorage({
       folder = "uploads/gallery/";
     } else if (req.baseUrl.includes("blog")) {
       folder = "uploads/blog/";
-    } else if (req.baseUrl.includes("report")) {
+    } else if (req.baseUrl.includes("lab-report")) {
       folder = "uploads/reports/";
     }
 
@@ -80,7 +80,7 @@ function fileFilter(req, file, cb) {
   if (allowedTypes.includes(file.mimetype)) {
     cb(null, true);
   } else {
-    cb(new Error("Invalid file type"), false);
+    cb(new Error("Only JPG, PNG, PDF allowed"), false);
   }
 }
 

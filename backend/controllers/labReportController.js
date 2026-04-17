@@ -32,6 +32,8 @@ export const createLabReport = async (req, res) => {
 ----------------------------------------------------- */
 export const updateLabReport = async (req, res) => {
   try {
+    console.log("FILE:", req.file);
+    console.log("BODY:", req.body);
     const reportId = req.params.reportId;
     const { labResult, status } = req.body;
 
