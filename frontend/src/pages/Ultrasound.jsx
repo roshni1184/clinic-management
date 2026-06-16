@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import abdomen from "../images/abdomen.png";
 import pelvis from "../images/pelvis.png";
 import pregnancy from "../images/pregnancy.png";
-import cardiac from "../images/cardiac.png";
+import cardiac from "../images/cardiac.png";  
 import thyroid from "../images/thyroid.png";
 import doppler from "../images/doppler.png";
 import ultrasound from "../images/ultrasound.png";
